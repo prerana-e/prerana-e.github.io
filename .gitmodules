@@ -1,0 +1,3 @@
+[submodule "docs/devportfolio"]
+	path = docs/devportfolio
+	url = https://github.com/RyanFitzgerald/devportfolio.git
