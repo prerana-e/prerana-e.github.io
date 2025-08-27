@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects • Prerana Gowda</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body class="sky">
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="index.html">PG</a>
+      <button class="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#contact" class="btn small">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="clouds" aria-hidden="true">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+  </div>
+
+  <main class="container">
+    <section class="card">
+      <h2>Projects</h2>
+      <div class="filterbar">
+        <button class="btn small" data-filter="all">All</button>
+        <button class="btn small" data-filter="backend">Backend</button>
+        <button class="btn small" data-filter="frontend">Frontend</button>
+        <button class="btn small" data-filter="ml">ML/RL</button>
+      </div>
+      <div class="grid projects-grid" id="projectsGrid">
+        <article id="nso-bot" class="tile tilt" data-tags="backend ml">
+          <h3>AOS Support Bot</h3>
+          <p>Python FastMCP server exposing NSO RESTCONF as tools, integrated with Azure OpenAI + Slack.</p>
+          <span class="chip">Python</span><span class="chip">MCP</span><span class="chip">NSO</span>
+        </article>
+        <article id="package-display" class="tile tilt" data-tags="frontend backend">
+          <h3>NSO Package Display</h3>
+          <p>Angular/TS + REST endpoints to visualize packages & oper state—less manual checks, clearer deploys.</p>
+          <span class="chip">Angular</span><span class="chip">REST</span>
+        </article>
+        <article id="rl-traffic" class="tile tilt" data-tags="ml">
+          <h3>RL: Traffic Control</h3>
+          <p>Reward shaping and generalization experiments for AV policies across multi-scenario environments.</p>
+          <span class="chip">PyTorch</span><span class="chip">RL</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Prerana Gowda</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Simple client-side filter
+    (function(){
+      const buttons = document.querySelectorAll('[data-filter]');
+      const cards = document.querySelectorAll('#projectsGrid .tile');
+      buttons.forEach(btn => btn.addEventListener('click', () => {
+        const tag = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          const tags = (card.getAttribute('data-tags')||'').split(/\\s+/);
+          card.style.display = (tag==='all' || tags.includes(tag)) ? '' : 'none';
+        });
+      }));
+    })();
+  </script>
+</body>
+</html>

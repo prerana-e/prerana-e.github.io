@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog • Prerana Gowda</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body class="sky">
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="index.html">PG</a>
+      <button class="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#contact" class="btn small">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="clouds" aria-hidden="true">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+  </div>
+
+  <main class="container">
+    <section class="card">
+      <h2>Blog</h2>
+      <div class="grid blog-grid" id="posts">
+        <article id="mcp-nso" class="tile tilt post">
+          <h3>Model Context Protocol + NSO</h3>
+          <p>How I wired an AI assistant through a custom MCP server to speak RESTCONF with Cisco NSO.</p>
+          <details>
+            <summary>Read more</summary>
+            <p>MCP provides a tool-calling contract. By exposing NSO endpoints as first-class tools with auth, validation,
+               and structured outputs, the assistant can run deterministic actions while still leveraging LLM reasoning.</p>
+          </details>
+          <span class="chip">MCP</span><span class="chip">NSO</span>
+        </article>
+
+        <article id="rl-mistakes" class="tile tilt post">
+          <h3>Lessons from RL Experiments</h3>
+          <p>Debugging policies, stabilizing training, and deciding when “good enough” is good enough.</p>
+          <details>
+            <summary>Read more</summary>
+            <p>Reward shaping should be principled and testable. Curriculum and scenario diversity matter more than raw steps.
+               Measure generalization, not just training curves.</p>
+          </details>
+          <span class="chip">RL</span><span class="chip">PyTorch</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Prerana Gowda</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Fun dynamic: random "floating" emphasis on words
+    (function(){
+      const posts = document.querySelectorAll('.post p');
+      posts.forEach(p => {
+        p.innerHTML = p.textContent.split(' ').map((w,i)=> i%7===0 ? `<span class="chip">${w}</span>` : w).join(' ');
+      });
+    })();
+  </script>
+</body>
+</html>

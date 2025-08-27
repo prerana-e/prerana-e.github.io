@@ -1,73 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prerana Gowda | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
-    <nav>
-      <h1>Prerana Gowda</h1>
-      <ul>
+<body class="sky">
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="index.html" aria-label="Home">PG</a>
+      <button class="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="btn small">Contact</a></li>
       </ul>
     </nav>
   </header>
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Hello! I'm Prerana Gowda. Currently in progress.</p>
-    </section>
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="project-list">
-        <div class="project">
-          <h3>Project Title</h3>
-          <p>Short project description. [Replace with your projects]</p>
+
+  <!-- Floating clouds / parallax layers -->
+  <div class="clouds" aria-hidden="true">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+    <div class="cloud c5"></div>
+  </div>
+
+  <main class="container">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <h1><span class="hi">Hi, I’m</span> <span class="name">Prerana Gowda</span></h1>
+        <p class="tagline">Full-stack engineer • AI/ML tinkerer • Builder of delightful tools</p>
+        <div class="cta">
+          <a href="projects.html" class="btn">View Projects</a>
+          <a href="blog.html" class="btn ghost">Read Blog</a>
         </div>
-        <!-- Add more projects as needed -->
+        <div class="meta-badges">
+          <span class="badge">Java</span>
+          <span class="badge">Python</span>
+          <span class="badge">C++</span>
+          <span class="badge">Angular</span>
+          <span class="badge">Spring Boot</span>
+          <span class="badge">RL</span>
+        </div>
+      </div>
+      <div class="floating-card">
+        <h3>Currently</h3>
+        <p>Building AI assistants & NSO tooling. Exploring RL and network automation.</p>
       </div>
     </section>
-    <section id="skills">
+
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <p>
+        I’m a CS student at UC San Diego focused on AI-powered developer tools and
+        network automation. I like shipping polished, practical systems—fast.
+      </p>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Featured Projects</h2>
+      <div class="grid projects-grid">
+        <article class="tile tilt" tabindex="0" onclick="location.href='projects.html#nso-bot'">
+          <h3>AOS Support Bot</h3>
+          <p>Full-stack AI assistant with a custom MCP server for Cisco NSO (RESTCONF tools + Slack UI).</p>
+          <span class="chip">Python</span><span class="chip">Angular</span><span class="chip">Azure OpenAI</span>
+        </article>
+        <article class="tile tilt" tabindex="0" onclick="location.href='projects.html#package-display'">
+          <h3>NSO Package Display</h3>
+          <p>Typescript UI & RESTCONF endpoints that visualize package metadata and operational status.</p>
+          <span class="chip">TypeScript</span><span class="chip">REST</span>
+        </article>
+        <article class="tile tilt" tabindex="0" onclick="location.href='projects.html#rl-traffic'">
+          <h3>RL: Traffic Control</h3>
+          <p>Reward-shaping experiments for autonomous vehicle policies across multi-scenario environments.</p>
+          <span class="chip">PyTorch</span><span class="chip">RL</span>
+        </article>
+      </div>
+      <div class="center mt">
+        <a class="btn" href="projects.html">See All Projects</a>
+      </div>
+    </section>
+
+    <section id="skills" class="card">
       <h2>Skills</h2>
-      <ul class="skills-list">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <!-- Add more skills -->
+      <ul class="chip-list">
+        <li>Java</li><li>Python</li><li>C/C++</li><li>TypeScript</li><li>Angular</li>
+        <li>React</li><li>Spring Boot</li><li>Docker</li><li>Kubernetes</li>
+        <li>PyTorch</li><li>Scikit-learn</li><li>REST APIs</li>
       </ul>
     </section>
 
-    <section id="blog">
-      <h2>Blog</h2>
-      <p>Welcome to my blog! Here you can write and share your posts. (To add posts, edit this section or link to a separate blog platform.)</p>
-      <!-- Example post preview -->
-      <!--
-      <article class="blog-post">
-        <h3>Blog Post Title</h3>
-        <p>Short excerpt from your post...</p>
-        <a href="#">Read more</a>
-      </article>
-      -->
+    <section id="blog" class="card">
+      <h2>Latest from the Blog</h2>
+      <div class="grid blog-grid">
+        <article class="tile post tilt" tabindex="0" onclick="location.href='blog.html#mcp-nso'">
+          <h3>Model Context Protocol + NSO</h3>
+          <p>Bridging AI assistants with network orchestration in a clean, tool-first way.</p>
+          <span class="chip">MCP</span><span class="chip">NSO</span>
+        </article>
+        <article class="tile post tilt" tabindex="0" onclick="location.href='blog.html#rl-mistakes'">
+          <h3>Lessons from RL Experiments</h3>
+          <p>What broke, what worked, and how I cut training time without losing quality.</p>
+          <span class="chip">RL</span><span class="chip">PyTorch</span>
+        </article>
+      </div>
+      <div class="center mt">
+        <a class="btn ghost" href="blog.html">Go to Blog</a>
+      </div>
     </section>
-    <section id="contact">
+
+    <section id="contact" class="card">
       <h2>Contact</h2>
       <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
+        <label class="sr-only" for="name">Name</label>
+        <input id="name" type="text" name="name" placeholder="Your Name" required />
+        <label class="sr-only" for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="Your Email" required />
+        <label class="sr-only" for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="btn">Send</button>
       </form>
     </section>
   </main>
-  <footer>
-    <p>&copy; 2025 Prerana Gowda. All rights reserved.</p>
+
+  <footer class="site-footer">
+    <p>© 2025 Prerana Gowda • Built with ♥︎</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
