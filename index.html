@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="sky">
   <header class="site-header">
@@ -19,8 +19,10 @@
         <li><a href="projects.html">Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact" class="btn small">Contact</a></li>
+  <li><a href="assets/resume/prerana-gowda-resume.pdf" download>Resume</a></li>
+  <li><a href="#contact" class="btn small btn-contact" data-scroll>Contact</a></li>
       </ul>
+  <div class="nav-extra" aria-hidden="false"></div>
     </nav>
   </header>
 
@@ -34,38 +36,140 @@
   </div>
 
   <main class="container">
-    <section class="hero" id="top">
-      <div class="hero-inner">
-        <h1><span class="hi">Hi, I’m</span> <span class="name">Prerana Gowda</span></h1>
-        <p class="tagline">Full-stack engineer • AI/ML tinkerer • Builder of delightful tools</p>
-        <div class="cta">
-          <a href="projects.html" class="btn">View Projects</a>
-          <a href="blog.html" class="btn ghost">Read Blog</a>
+  <section class="hero enhanced" id="top" data-reveal>
+      <div class="hero-grid">
+        <div class="hero-col hero-text">
+          <h1><span class="hi">Hi, I’m</span> <span class="name">Prerana Gowda</span></h1>
+          <p class="tagline">Full‑stack engineer crafting AI‑assisted developer & network automation experiences with a bias toward shipping polished, reliable tools.</p>
+          <div class="hero-cta-row">
+            <div class="cta">
+              <a href="projects.html" class="btn">View Projects</a>
+              <a href="blog.html" class="btn ghost">Read Blog</a>
+            </div>
+            <ul class="metrics" aria-label="Quick stats">
+              <li><span class="metric-value">12+</span><span class="metric-label">Projects</span></li>
+              <li><span class="metric-value">5</span><span class="metric-label">Domains</span></li>
+              <li><span class="metric-value">3</span><span class="metric-label">AI Tools</span></li>
+            </ul>
+          </div>
+          <div class="meta-badges scroll-x">
+            <span class="badge">Java</span>
+            <span class="badge">Python</span>
+            <span class="badge">TypeScript</span>
+            <span class="badge">Angular</span>
+            <span class="badge">Spring Boot</span>
+            <span class="badge">PyTorch</span>
+            <span class="badge">RL</span>
+          </div>
         </div>
-        <div class="meta-badges">
-          <span class="badge">Java</span>
-          <span class="badge">Python</span>
-          <span class="badge">C++</span>
-          <span class="badge">Angular</span>
-          <span class="badge">Spring Boot</span>
-          <span class="badge">RL</span>
-        </div>
+        <aside class="hero-col hero-side" aria-label="Profile overview">
+          <div class="profile-card tile">
+            <figure class="avatar-wrap">
+              <img src="assets/img/profile_photo.jpg" alt="Portrait illustration placeholder" class="avatar" loading="lazy" />
+            </figure>
+            <div class="profile-body">
+              <div class="current-focus">
+                <h3 class="subhead">Currently</h3>
+                <p>Building AI assistants & NSO tooling • Experimenting with RL reward shaping • Refining dev experience via thoughtful design tokens.</p>
+              </div>
+              <div class="quick-links">
+                <a href="projects.html#nso-bot" class="mini-link">AOS Support Bot →</a>
+                <a href="blog.html#mcp-nso" class="mini-link">MCP + NSO Deep Dive →</a>
+                <a href="blog.html?tag=ai" class="mini-link">AI Posts →</a>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
-      <div class="floating-card">
-        <h3>Currently</h3>
-        <p>Building AI assistants & NSO tooling. Exploring RL and network automation.</p>
+      <div class="hero-glow" aria-hidden="true"></div>
+    </section>
+
+  <section id="about" class="card about-split" data-reveal>
+      <div class="about-col">
+        <h2>About Me</h2>
+        <p>I’m a CS student at UC San Diego focused on AI‑powered developer tooling & network automation. I value crisp interfaces, dignified error states, and instrumentation that builds trust.</p>
+        <p class="muted-line">Goal: accelerate intent → safe action loops for operators & engineers.</p>
+      </div>
+      <div class="about-col highlights">
+        <ul class="highlight-list" aria-label="Highlights">
+          <li><span class="dot"></span> Designed MCP tool layer for network orchestration (reducing manual change risk).</li>
+          <li><span class="dot"></span> Built reinforcement learning experiments with reproducible harness & variance tracking.</li>
+          <li><span class="dot"></span> Created thumbnail & performance pipeline (Sharp) + dark/light adaptive UI system.</li>
+        </ul>
       </div>
     </section>
 
-    <section id="about" class="card">
-      <h2>About Me</h2>
-      <p>
-        I’m a CS student at UC San Diego focused on AI-powered developer tools and
-        network automation. I like shipping polished, practical systems—fast.
-      </p>
+    <section id="journey" class="card journey" aria-label="Career Timeline" data-reveal>
+      <h2>Journey</h2>
+      <ol class="timeline" aria-label="Timeline of roles" role="list">
+        <li class="timeline-item" role="listitem" data-reveal data-delay="0.05">
+          <details class="timeline-card ti-collapsible" open>
+            <summary class="ti-summary">
+              <span class="ti-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15c-.39-.3-.9-.46-1.42-.4H3a2 2 0 1 1 0-4h.09c.52.06 1.03-.1 1.42-.4a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09c.52.06 1.03-.1 1.42-.4l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 9 9.4c.3-.39.46-.9.4-1.42V8a2 2 0 1 1 4 0v.09c-.06.52.1 1.03.4 1.42.39.3.9.46 1.42.4H16a2 2 0 1 1 0 4h-.09c-.52-.06-1.03.1-1.42.4Z"/></svg>
+              </span>
+              <span class="ti-text-group">
+                <h3>AI / Platform Intern <span class="at">@ Innovate Networks</span></h3>
+                <time class="ti-time" datetime="2025-06">Jun 2025 – Present</time>
+              </span>
+              <span class="ti-caret" aria-hidden="true"></span>
+            </summary>
+            <div class="ti-content">
+              <p>Prototyping MCP-driven AI assistant tooling layered over network orchestration APIs; adding guardrails & action logging.</p>
+              <ul class="ti-points" role="list">
+                <li>Typed tool interface for NSO RESTCONF exposure</li>
+                <li>Diff simulation pre-apply checks (in progress)</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+        <li class="timeline-item" role="listitem" data-reveal data-delay="0.15">
+          <details class="timeline-card ti-collapsible">
+            <summary class="ti-summary">
+              <span class="ti-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22h12M9 18h6M10 14h4M12 2C9 5 5 7 5 11c0 3 2.5 5 7 9 4.5-4 7-6 7-9 0-4-4-6-7-9Z"/></svg>
+              </span>
+              <span class="ti-text-group">
+                <h3>Research Assistant <span class="at">@ UCSD Lab</span></h3>
+                <time class="ti-time" datetime="2024-09">Sep 2024 – May 2025</time>
+              </span>
+              <span class="ti-caret" aria-hidden="true"></span>
+            </summary>
+            <div class="ti-content">
+              <p>Reinforcement learning experiments across multi-scenario traffic environments; reward shaping & stability focus.</p>
+              <ul class="ti-points" role="list">
+                <li>Variance tracking dashboards & harness</li>
+                <li>Curriculum scheduling reduced instability</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+        <li class="timeline-item" role="listitem" data-reveal data-delay="0.25">
+          <details class="timeline-card ti-collapsible">
+            <summary class="ti-summary">
+              <span class="ti-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+              </span>
+              <span class="ti-text-group">
+                <h3>Full‑Stack Project Work</h3>
+                <time class="ti-time" datetime="2023-06">2023 – 2024</time>
+              </span>
+              <span class="ti-caret" aria-hidden="true"></span>
+            </summary>
+            <div class="ti-content">
+              <p>Orchestration dashboards, RL tooling, UI component systems, and asset optimization pipelines across personal & academic projects.</p>
+              <ul class="ti-points" role="list">
+                <li>Dark / light adaptive design tokens</li>
+                <li>Automated thumbnail performance pipeline</li>
+              </ul>
+            </div>
+          </details>
+        </li>
+      </ol>
+      <div class="center mt journey-actions"><a href="assets/resume/prerana-gowda-resume.pdf" class="btn ghost" download>Download Resume</a></div>
     </section>
 
-    <section id="projects" class="card">
+  <section id="projects" class="card" data-reveal>
       <h2>Featured Projects</h2>
       <div class="grid projects-grid">
         <article class="tile tilt" tabindex="0" onclick="location.href='projects.html#nso-bot'">
@@ -89,16 +193,7 @@
       </div>
     </section>
 
-    <section id="skills" class="card">
-      <h2>Skills</h2>
-      <ul class="chip-list">
-        <li>Java</li><li>Python</li><li>C/C++</li><li>TypeScript</li><li>Angular</li>
-        <li>React</li><li>Spring Boot</li><li>Docker</li><li>Kubernetes</li>
-        <li>PyTorch</li><li>Scikit-learn</li><li>REST APIs</li>
-      </ul>
-    </section>
-
-    <section id="blog" class="card">
+  <section id="blog" class="card" data-reveal>
       <h2>Latest from the Blog</h2>
       <div class="grid blog-grid">
         <article class="tile post tilt" tabindex="0" onclick="location.href='blog.html#mcp-nso'">
@@ -117,18 +212,44 @@
       </div>
     </section>
 
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
-        <label class="sr-only" for="name">Name</label>
-        <input id="name" type="text" name="name" placeholder="Your Name" required />
-        <label class="sr-only" for="email">Email</label>
-        <input id="email" type="email" name="email" placeholder="Your Email" required />
-        <label class="sr-only" for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit" class="btn">Send</button>
-      </form>
+    <section id="skills" class="card" data-reveal>
+      <h2>Skills</h2>
+      <ul class="chip-list">
+        <li>Java</li><li>Python</li><li>C/C++</li><li>TypeScript</li><li>Angular</li>
+        <li>React</li><li>Spring Boot</li><li>Docker</li><li>Kubernetes</li>
+        <li>PyTorch</li><li>Scikit-learn</li><li>REST APIs</li>
+      </ul>
     </section>
+
+    <section id="contact" class="card contact-section" data-reveal>
+      <h2>Contact</h2>
+      <p class="contact-intro">Have a question, idea, or opportunity? Drop a note and I’ll get back soon.</p>
+      <form id="contactForm" action="mailto:your.email@example.com" method="post" enctype="text/plain" novalidate>
+        <div class="contact-grid">
+          <div class="field-group">
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" type="text" name="name" placeholder="Your Name" autocomplete="name" required />
+            <span class="field-error" data-for="name"></span>
+          </div>
+          <div class="field-group">
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="Your Email" autocomplete="email" required />
+            <span class="field-error" data-for="email"></span>
+          </div>
+          <div class="field-group full">
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
+            <span class="field-error" data-for="message"></span>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <button type="submit" class="btn submit-btn" aria-live="polite">Send</button>
+          <span class="form-status" id="formStatus" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+      <noscript><p class="noscript">JavaScript is disabled; the form will open your email client.</p></noscript>
+    </section>
+
   </main>
 
   <footer class="site-footer">

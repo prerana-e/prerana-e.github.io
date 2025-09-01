@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="sky">
   <header class="site-header">
@@ -30,29 +30,80 @@
   </div>
 
   <main class="container">
-    <section class="card">
-      <h2>Projects</h2>
-      <div class="filterbar">
-        <button class="btn small" data-filter="all">All</button>
-        <button class="btn small" data-filter="backend">Backend</button>
-        <button class="btn small" data-filter="frontend">Frontend</button>
-        <button class="btn small" data-filter="ml">ML/RL</button>
+    <section class="card projects-card">
+      <div class="projects-head">
+        <h2>Projects</h2>
+        <div class="projects-controls" role="toolbar" aria-label="Project filters and search">
+          <div class="segmented multi" id="filterBar" aria-label="Tag filters">
+            <button class="seg-btn active" data-filter="all" aria-pressed="true">All</button>
+            <!-- dynamic tag buttons injected -->
+          </div>
+          <div class="search-wrap">
+            <input type="search" id="projSearch" placeholder="Search…" aria-label="Search projects" />
+            <select id="projSort" aria-label="Sort projects">
+              <option value="recent">Sort: Recent</option>
+              <option value="az">Title A→Z</option>
+              <option value="za">Title Z→A</option>
+            </select>
+          </div>
+        </div>
+        <div class="results-line"><span id="resultsCount">0</span> shown</div>
       </div>
       <div class="grid projects-grid" id="projectsGrid">
-        <article id="nso-bot" class="tile tilt" data-tags="backend ml">
-          <h3>AOS Support Bot</h3>
+        <article id="nso-bot" class="tile project fade-in" tabindex="0" data-tags="backend ml ai" data-title="AOS Support Bot" data-date="2025-07-01" data-desc="Python FastMCP server exposing NSO RESTCONF as MCP tools for Azure OpenAI + Slack workflow automation.">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/nso-bot.jpg" alt="Screenshot of AOS Support Bot interface" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>AOS Support Bot</h3>
+            <span class="proj-badge">AI</span>
+          </header>
           <p>Python FastMCP server exposing NSO RESTCONF as tools, integrated with Azure OpenAI + Slack.</p>
-          <span class="chip">Python</span><span class="chip">MCP</span><span class="chip">NSO</span>
+          <ul class="stack-list"><li>Python</li><li>MCP</li><li>NSO</li></ul>
         </article>
-        <article id="package-display" class="tile tilt" data-tags="frontend backend">
-          <h3>NSO Package Display</h3>
+        <article id="package-display" class="tile project fade-in" tabindex="0" data-tags="frontend backend dx" data-title="NSO Package Display" data-date="2025-05-12" data-desc="Angular/TS UI plus REST endpoints for visualizing packages and operational state, reducing manual checks.">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/package-display.jpg" alt="NSO Package Display dashboard screenshot" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>NSO Package Display</h3>
+            <span class="proj-badge">DX</span>
+          </header>
           <p>Angular/TS + REST endpoints to visualize packages & oper state—less manual checks, clearer deploys.</p>
-          <span class="chip">Angular</span><span class="chip">REST</span>
+            <ul class="stack-list"><li>Angular</li><li>REST</li></ul>
         </article>
-        <article id="rl-traffic" class="tile tilt" data-tags="ml">
-          <h3>RL: Traffic Control</h3>
-          <p>Reward shaping and generalization experiments for AV policies across multi-scenario environments.</p>
-          <span class="chip">PyTorch</span><span class="chip">RL</span>
+        <article id="rl-traffic" class="tile project fade-in" tabindex="0" data-tags="ml research rl" data-title="RL: Traffic Control" data-date="2025-04-10" data-desc="Reward shaping & generalization experiments for AV policies across multiple simulated traffic scenarios.">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/rl-traffic.jpg" alt="Visualization from RL traffic control experiment" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>RL: Traffic Control</h3>
+            <span class="proj-badge">Research</span>
+          </header>
+          <p>Reward shaping & generalization experiments for AV policies across multi-scenario environments.</p>
+          <ul class="stack-list"><li>PyTorch</li><li>RL</li></ul>
+        </article>
+        <article id="rl-traffic" class="tile project fade-in" tabindex="0" data-tags="ml research rl" data-title="RL: Traffic Control" data-date="2025-04-10" data-desc="Reward shaping & generalization experiments for AV policies across multiple simulated traffic scenarios.">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/rl-traffic.jpg" alt="Visualization from RL traffic control experiment" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>RL: Traffic Control</h3>
+            <span class="proj-badge">Research</span>
+          </header>
+          <p>Reward shaping & generalization experiments for AV policies across multi-scenario environments.</p>
+          <ul class="stack-list"><li>PyTorch</li><li>RL</li></ul>
+        </article>
+        <article id="rl-traffic" class="tile project fade-in" tabindex="0" data-tags="ml research rl" data-title="RL: Traffic Control" data-date="2025-04-10" data-desc="Reward shaping & generalization experiments for AV policies across multiple simulated traffic scenarios.">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/rl-traffic.jpg" alt="Visualization from RL traffic control experiment" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>RL: Traffic Control</h3>
+            <span class="proj-badge">Research</span>
+          </header>
+          <p>Reward shaping & generalization experiments for AV policies across multi-scenario environments.</p>
+          <ul class="stack-list"><li>PyTorch</li><li>RL</li></ul>
         </article>
       </div>
     </section>
@@ -64,17 +115,103 @@
 
   <script src="script.js"></script>
   <script>
-    // Simple client-side filter
     (function(){
-      const buttons = document.querySelectorAll('[data-filter]');
-      const cards = document.querySelectorAll('#projectsGrid .tile');
-      buttons.forEach(btn => btn.addEventListener('click', () => {
-        const tag = btn.getAttribute('data-filter');
-        cards.forEach(card => {
-          const tags = (card.getAttribute('data-tags')||'').split(/\\s+/);
-          card.style.display = (tag==='all' || tags.includes(tag)) ? '' : 'none';
+      const filterBar=document.getElementById('filterBar');
+      const search=document.getElementById('projSearch');
+      const sort=document.getElementById('projSort');
+      const results=document.getElementById('resultsCount');
+      const grid=document.getElementById('projectsGrid');
+      const cards=[...grid.querySelectorAll('.project')];
+      cards.forEach((c,i)=>c.style.setProperty('--i',i));
+      // Build tag set
+      const tagSet=new Set();
+      cards.forEach(c=> (c.dataset.tags||'').split(/\s+/).forEach(t=>t&&tagSet.add(t)) );
+      [...tagSet].sort().forEach(tag=>{
+        const btn=document.createElement('button');
+        btn.className='seg-btn';
+        btn.type='button';
+        btn.dataset.filter=tag;
+        btn.setAttribute('aria-pressed','false');
+        btn.textContent=tag;
+        filterBar.appendChild(btn);
+      });
+      const activeTags=new Set(); // empty => all
+      function apply(){
+        const q=(search.value||'').toLowerCase();
+        let visible=0;
+        cards.forEach(card=>{
+          const tags=(card.dataset.tags||'').split(/\s+/);
+            const title=card.dataset.title.toLowerCase();
+            const matchesTags=activeTags.size===0 || [...activeTags].every(t=>tags.includes(t));
+            const matchesSearch=!q||title.includes(q);
+            const show=matchesTags && matchesSearch;
+            card.classList.toggle('hidden-card', !show);
+            if(show) visible++;
         });
-      }));
+        results.textContent=visible;
+      }
+      filterBar.addEventListener('click',e=>{
+        const btn=e.target.closest('.seg-btn'); if(!btn) return;
+        const tag=btn.dataset.filter;
+        if(tag==='all'){
+          activeTags.clear();
+          filterBar.querySelectorAll('.seg-btn').forEach(b=>{if(b.dataset.filter!=='all') b.classList.remove('active'); b.setAttribute('aria-pressed', b.dataset.filter==='all');});
+          filterBar.querySelector('.seg-btn[data-filter="all"]').classList.add('active');
+          apply();
+          return;
+        }
+        // toggle tag
+        if(activeTags.has(tag)){ activeTags.delete(tag); btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
+        else { activeTags.add(tag); btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
+        // handle All state
+        const allBtn=filterBar.querySelector('.seg-btn[data-filter="all"]');
+        if(activeTags.size===0){ allBtn.classList.add('active'); allBtn.setAttribute('aria-pressed','true'); }
+        else { allBtn.classList.remove('active'); allBtn.setAttribute('aria-pressed','false'); }
+        apply();
+      });
+      search.addEventListener('input',apply);
+      sort.addEventListener('change',()=>{
+        if(sort.value==='recent'){ cards.sort((a,b)=> new Date(b.dataset.date)-new Date(a.dataset.date)); }
+        else if(sort.value==='az'){ cards.sort((a,b)=> a.dataset.title.localeCompare(b.dataset.title)); }
+        else if(sort.value==='za'){ cards.sort((a,b)=> b.dataset.title.localeCompare(a.dataset.title)); }
+        cards.forEach(c=>grid.appendChild(c));
+      });
+      // Quick view modal
+      const overlay=document.createElement('div'); overlay.className='proj-modal-overlay'; overlay.innerHTML='<div class="proj-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close-modal" aria-label="Close">×</button><div class="modal-content"></div></div>';
+      document.body.appendChild(overlay);
+      const modal=overlay.querySelector('.proj-modal');
+      const closeBtn=overlay.querySelector('.close-modal');
+      const content=overlay.querySelector('.modal-content');
+      function open(card){
+        const title=card.querySelector('h3').textContent;
+        const desc=card.dataset.desc || card.querySelector('p').textContent;
+        const stack=[...card.querySelectorAll('.stack-list li')].map(li=>li.textContent).join(', ');
+        content.innerHTML=`<h3 id="modalTitle">${title}</h3><p>${desc}</p><p><strong>Stack:</strong> ${stack}</p><p class="modal-links"><a href="#${card.id}" class="deep-link">Permalink</a></p>`;
+        overlay.classList.add('open');
+        closeBtn.focus();
+      }
+      function close(){ overlay.classList.remove('open'); }
+      grid.addEventListener('click',e=>{const card=e.target.closest('.project'); if(card) open(card);});
+      grid.addEventListener('keydown',e=>{ if(e.key==='Enter'){ const card=e.target.closest('.project'); if(card){ open(card); e.preventDefault(); } } });
+      overlay.addEventListener('click',e=>{ if(e.target===overlay) close(); });
+      closeBtn.addEventListener('click',close);
+      window.addEventListener('keydown',e=>{ if(e.key==='Escape' && overlay.classList.contains('open')) close(); });
+      // Keyboard arrow nav between cards
+      grid.addEventListener('keydown',e=>{
+        if(!['ArrowRight','ArrowLeft','ArrowDown','ArrowUp'].includes(e.key)) return;
+        const focusable=cards.filter(c=>!c.classList.contains('hidden-card'));
+        const idx=focusable.indexOf(document.activeElement);
+        if(idx>-1){
+          e.preventDefault();
+          let nextIdx=idx;
+          if(e.key==='ArrowRight' || e.key==='ArrowDown') nextIdx=Math.min(focusable.length-1, idx+1); else nextIdx=Math.max(0, idx-1);
+          focusable[nextIdx].focus();
+        }
+      });
+      // Initial apply with recent sort
+      sort.value='recent';
+      sort.dispatchEvent(new Event('change'));
+      apply();
     })();
   </script>
 </body>

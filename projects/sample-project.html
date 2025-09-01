@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sample Project</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <script type="module">import { projects } from '/data/projects.js';
+  const slug = 'sample-project';
+  const project = projects.find(p=>p.slug===slug);
+  if(project){
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.getElementById('title').textContent = project.title;
+      document.getElementById('summary').textContent = project.longDescription||project.summary;
+      const skills = document.getElementById('skills');
+      project.skills.forEach(s=>{const span=document.createElement('span');span.className='tag';span.textContent=s;skills.appendChild(span);});
+      if(project.repo){document.getElementById('repo').href=project.repo;}
+      if(project.demo){document.getElementById('demo').href=project.demo;} else {document.getElementById('demo').remove();}
+    });
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">Portfolio</div>
+    <nav aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="/index.html">Portfolio</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/timeline/">Timeline</a></li>
+        <li><a href="/index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="narrow">
+    <article>
+      <h1 id="title">Sample Project</h1>
+      <p id="summary"></p>
+      <div id="skills" class="tag-list"></div>
+      <p class="links">
+        <a id="repo" class="btn" target="_blank" rel="noopener">Source Code</a>
+        <a id="demo" class="btn primary" target="_blank" rel="noopener">Live Demo</a>
+      </p>
+    </article>
+  </main>
+  <footer class="site-footer">© <span id="year"></span> Your Name.</footer>
+</body>
+</html>

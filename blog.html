@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="alternate" type="application/rss+xml" title="Prerana Gowda Blog RSS" href="rss.xml" />
 </head>
 <body class="sky">
   <header class="site-header">
@@ -30,32 +31,168 @@
     <div class="cloud c4"></div>
   </div>
 
-  <main class="container">
-    <section class="card">
-      <h2>Blog</h2>
-      <div class="grid blog-grid" id="posts">
-        <article id="mcp-nso" class="tile tilt post">
-          <h3>Model Context Protocol + NSO</h3>
-          <p>How I wired an AI assistant through a custom MCP server to speak RESTCONF with Cisco NSO.</p>
-          <details>
-            <summary>Read more</summary>
-            <p>MCP provides a tool-calling contract. By exposing NSO endpoints as first-class tools with auth, validation,
-               and structured outputs, the assistant can run deterministic actions while still leveraging LLM reasoning.</p>
+  <main class="container blog-page">
+    <section class="card blog-hero">
+      <h1>Blog</h1>
+      <p class="blog-tagline">Deep dives, build logs, design notes & small learnings. Long-form when it matters & quick hits when it doesn't.</p>
+      <div class="blog-controls">
+        <div class="segmented blog-filters" role="toolbar" aria-label="Filter posts by tag">
+          <button class="seg-btn active" data-filter="all">All</button>
+          <button class="seg-btn" data-filter="ai">AI</button>
+          <button class="seg-btn" data-filter="networking">Networking</button>
+          <button class="seg-btn" data-filter="devops">DevOps</button>
+          <button class="seg-btn" data-filter="design">Design</button>
+          <button class="seg-btn" data-filter="productivity">Productivity</button>
+          <button class="seg-btn" data-filter="career">Career</button>
+        </div>
+        <div class="search-wrap blog-search">
+          <input id="blogSearch" type="search" placeholder="Search posts" aria-label="Search posts">
+        </div>
+        <div class="blog-aux-links">
+          <a class="aux-link" href="tags.html">Tags</a>
+          <a class="aux-link" href="rss.xml" rel="noopener">RSS</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="posts-wrap">
+  <div class="posts-grid" id="posts" data-page-size="5">
+        <!-- Sample Post 1 -->
+        <article id="mcp-nso" class="post tile" data-tags="ai,networking" data-date="2025-08-12">
+          <header class="post-head">
+            <h3>Bridging Model Context Protocol with Network Orchestration</h3>
+            <div class="post-meta"><time datetime="2025-08-12">Aug 12, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">AI · Networking</span></div>
+          </header>
+          <p class="excerpt">How I wired an AI assistant through a custom MCP server to speak RESTCONF with Cisco NSO & keep hallucinations out of the control plane.</p>
+          <details class="post-body-wrap" open>
+            <summary>Collapse</summary>
+            <div class="post-body prose">
+              <p><strong>Why:</strong> LLMs are great at reasoning around desired state but untrusted at executing imperative network changes. The <em>Model Context Protocol</em> (MCP) lets you expose only safe, well-typed actions.</p>
+              <p>I built an adapter that reflects NSO RESTCONF endpoints into MCP tools. Each tool declares input schema & pre-flight validation. Returned output is normalized JSON—not raw CLI text.</p>
+              <pre><code>// Simplified tool descriptor
+interface Tool {
+  name: string;
+  input: Schema;
+  run(args): Promise<Result>;
+}
+// Example: fetch service instance
+tool("get_service", { service: string }, async ({service}) => nsoreq(`/restconf/data/svc:${'{'}service{'}'}`));</code></pre>
+              <blockquote>
+                <p>Deterministic envelopes + constrained side-effects give the model guardrails while preserving flexible goal reasoning.</p>
+              </blockquote>
+              <ul>
+                <li>Map: RESTCONF -> canonical tool set</li>
+                <li>Add auth + rate limits</li>
+                <li>Cache read-only queries</li>
+                <li>Require idempotency proof for mutating ops</li>
+              </ul>
+              <p>Result: zero unaudited config diffs; faster intent translation; human trust improved because every action is logged with structured parameters.</p>
+              <hr>
+              <p><em>Next:</em> introduce a diff simulation tool & integrate policy checks before write operations.</p>
+            </div>
           </details>
-          <span class="chip">MCP</span><span class="chip">NSO</span>
+          <div class="chip-line"><span class="chip">MCP</span><span class="chip">NSO</span><span class="chip">RESTCONF</span></div>
         </article>
 
-        <article id="rl-mistakes" class="tile tilt post">
-          <h3>Lessons from RL Experiments</h3>
-          <p>Debugging policies, stabilizing training, and deciding when “good enough” is good enough.</p>
-          <details>
+        <!-- Sample Post 2 -->
+        <article id="rl-lessons" class="post tile" data-tags="ai" data-date="2025-07-02">
+          <header class="post-head">
+            <h3>Hard Lessons from Small Reinforcement Learning Runs</h3>
+            <div class="post-meta"><time datetime="2025-07-02">Jul 2, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">AI</span></div>
+          </header>
+          <p class="excerpt">Micro-budgets force discipline: reward shaping sanity checks, variance tracking & deliberately tiny experiments.</p>
+          <details class="post-body-wrap">
             <summary>Read more</summary>
-            <p>Reward shaping should be principled and testable. Curriculum and scenario diversity matter more than raw steps.
-               Measure generalization, not just training curves.</p>
+            <div class="post-body prose">
+              <p>Instead of scaling prematurely, I treated every run as a falsifiable hypothesis. If a change didn’t tighten variance bands in 3 trials, it was discarded.</p>
+              <p><strong>Signal quality beats parameter count.</strong> I added a <code>console.table()</code>-driven dashboard during training printing rolling KL, entropy & episodic return deltas.</p>
+              <pre><code>// Pseudo logging snippet
+logStep({
+  step,
+  return: epReturn,
+  entropy: policy.entropy(),
+  kl: klDiv,
+  lr: optimizer.lr
+});</code></pre>
+              <p>That surfaced early collapse in one variant long before aggregate plots would have. Most “improvements” were noise.</p>
+              <p><em>Rule of thumb:</em> if a tweak needs >5 seeds to look positive, it's probably placebo.</p>
+            </div>
           </details>
-          <span class="chip">RL</span><span class="chip">PyTorch</span>
+          <div class="chip-line"><span class="chip">RL</span><span class="chip">PyTorch</span></div>
         </article>
-      </div>
+
+        <!-- Sample Post 3 -->
+        <article id="infra-fast" class="post tile" data-tags="devops,productivity" data-date="2025-06-18">
+          <header class="post-head">
+            <h3>Shaving 40% Off Ephemeral Environment Spin-up</h3>
+            <div class="post-meta"><time datetime="2025-06-18">Jun 18, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">DevOps · Productivity</span></div>
+          </header>
+          <p class="excerpt">Layered caching, image diet, parallel provisioners & a ruthless look at “default” waits.</p>
+          <details class="post-body-wrap">
+            <summary>Read more</summary>
+            <div class="post-body prose">
+              <ol>
+                <li>Base image trimmed from 1.9GB → 640MB</li>
+                <li>Terraform module decomposition enabling parallel apply</li>
+                <li>Feature flags gating expensive integrations during preview</li>
+              </ol>
+              <p>We instrumented each stage; a flame graph for infra is just a waterfall with ego removed.</p>
+            </div>
+          </details>
+          <div class="chip-line"><span class="chip">Terraform</span><span class="chip">Docker</span></div>
+        </article>
+
+        <!-- Sample Post 4 -->
+        <article id="design-tokens" class="post tile" data-tags="design,productivity" data-date="2025-05-04">
+          <header class="post-head">
+            <h3>Design Tokens That Engineers Don’t Ignore</h3>
+            <div class="post-meta"><time datetime="2025-05-04">May 4, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">Design · Productivity</span></div>
+          </header>
+            <p class="excerpt">Actionable docs + lint rules > pretty Figma handoffs. Make the right thing the easy thing.</p>
+            <details class="post-body-wrap">
+              <summary>Read more</summary>
+              <div class="post-body prose">
+                <p>The token JSON lived next to the components consuming it; PR diffs showed semantic deltas. A failing CI check caught any hard-coded color before review.</p>
+                <blockquote><p>Adoption isn't an education problem, it's an incentives + friction problem.</p></blockquote>
+              </div>
+            </details>
+            <div class="chip-line"><span class="chip">Tokens</span><span class="chip">DX</span></div>
+        </article>
+
+        <!-- Sample Post 5 -->
+        <article id="focus-systems" class="post tile" data-tags="productivity,career" data-date="2025-04-11">
+          <header class="post-head">
+            <h3>Focus Systems for Context-Switch Heavy Weeks</h3>
+            <div class="post-meta"><time datetime="2025-04-11">Apr 11, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">Productivity · Career</span></div>
+          </header>
+          <p class="excerpt">Energy budgeting > time boxing. I cluster tasks by cognitive mode & protect recovery slots.</p>
+          <details class="post-body-wrap">
+            <summary>Read more</summary>
+            <div class="post-body prose">
+              <p>A 3-tier backlog: <code>deep</code>, <code>shallow</code>, <code>maintenance</code>. Every morning I slot just 1 deep item; any extra is a bonus, not a promise.</p>
+              <p>Slack windows collapsed to 10m top-of-hour sweeps. Calendar holds for decompression prevented accidental entropy.</p>
+            </div>
+          </details>
+          <div class="chip-line"><span class="chip">Habits</span><span class="chip">Focus</span></div>
+        </article>
+
+        <!-- Sample Post 6 -->
+        <article id="early-career" class="post tile" data-tags="career" data-date="2025-03-02">
+          <header class="post-head">
+            <h3>What Actually Compounds in an Early Engineering Career</h3>
+            <div class="post-meta"><time datetime="2025-03-02">Mar 2, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">Career</span></div>
+          </header>
+          <p class="excerpt">Pattern literacy, feedback loops, and naming trade-offs explicitly.</p>
+          <details class="post-body-wrap">
+            <summary>Read more</summary>
+            <div class="post-body prose">
+              <p>I tracked a personal <em>decision changelog</em>: major calls, rationale, outcome 30 days later. It accelerated judgment calibration.</p>
+            </div>
+          </details>
+          <div class="chip-line"><span class="chip">Growth</span><span class="chip">Meta</span></div>
+        </article>
+  </div>
+  <nav class="pager" aria-label="Blog pagination" id="blogPager"></nav>
     </section>
   </main>
 
@@ -65,13 +202,12 @@
 
   <script src="script.js"></script>
   <script>
-    // Fun dynamic: random "floating" emphasis on words
-    (function(){
-      const posts = document.querySelectorAll('.post p');
-      posts.forEach(p => {
-        p.innerHTML = p.textContent.split(' ').map((w,i)=> i%7===0 ? `<span class="chip">${w}</span>` : w).join(' ');
-      });
-    })();
+    // Improve details toggle labels (open vs read more)
+    document.querySelectorAll('.post-body-wrap').forEach(d => {
+      const summary=d.querySelector('summary');
+      function sync(){ summary.textContent = d.open ? 'Collapse' : 'Read more'; }
+      d.addEventListener('toggle', sync); sync();
+    });
   </script>
 </body>
 </html>
