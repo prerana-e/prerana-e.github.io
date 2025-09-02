@@ -7,6 +7,17 @@ if(navToggle){
     navToggle.setAttribute('aria-expanded',String(!expanded));
     navLinks.classList.toggle('open');
   });
+  // Sidebar mini tag filters (delegate to existing filter buttons if present)
+  document.querySelectorAll('.tag-mini').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const tag=btn.getAttribute('data-filter');
+      const mainBtn=document.querySelector(`.blog-filters .seg-btn[data-filter="${tag}"]`);
+      if(mainBtn){mainBtn.click();}
+      // scroll to top of posts area
+      const posts=document.getElementById('posts');
+      if(posts){posts.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
 }
 
 // Smooth scroll + highlight for Contact button

@@ -56,11 +56,13 @@
         </div>
       </div>
     </section>
-
-    <section class="posts-wrap">
-  <div class="posts-grid" id="posts" data-page-size="5">
+    <!-- Newspaper style layout wrapper -->
+    <div class="news-layout">
+      <div class="news-main">
+        <section class="posts-wrap">
+  <div class="posts-grid news-grid" id="posts" data-page-size="5">
         <!-- Sample Post 1 -->
-        <article id="mcp-nso" class="post tile" data-tags="ai,networking" data-date="2025-08-12">
+        <article id="mcp-nso" class="post tile feature" data-tags="ai,networking" data-date="2025-08-12">
           <header class="post-head">
             <h3>Bridging Model Context Protocol with Network Orchestration</h3>
             <div class="post-meta"><time datetime="2025-08-12">Aug 12, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">AI · Networking</span></div>
@@ -195,7 +197,40 @@ logStep({
         </article>
   </div>
   <nav class="pager" aria-label="Blog pagination" id="blogPager"></nav>
-    </section>
+        </section>
+      </div>
+      <aside class="news-sidebar" aria-label="Sidebar">
+        <div class="card sidebar-card about-card">
+          <h3 class="sidebar-title">About This Blog</h3>
+          <p class="mini">Engineering notes, systems design, AI pragmatics & workflow experiments. New posts when I finish something worth shipping or learning.</p>
+        </div>
+        <div class="card sidebar-card latest-card">
+          <h3 class="sidebar-title">Latest</h3>
+          <ol class="latest-list">
+            <li><a href="#mcp-nso">Bridging MCP with Network Orchestration</a></li>
+            <li><a href="#rl-lessons">Hard Lessons from Small RL Runs</a></li>
+            <li><a href="#infra-fast">Shaving 40% Off Env Spin-up</a></li>
+            <li><a href="#design-tokens">Design Tokens Engineers Use</a></li>
+            <li><a href="#focus-systems">Focus Systems for Heavy Weeks</a></li>
+          </ol>
+        </div>
+        <div class="card sidebar-card tags-card">
+          <h3 class="sidebar-title">Tags</h3>
+          <ul class="tag-mini-cloud">
+            <li><button data-filter="ai" class="tag-mini">AI</button></li>
+            <li><button data-filter="networking" class="tag-mini">Networking</button></li>
+            <li><button data-filter="devops" class="tag-mini">DevOps</button></li>
+            <li><button data-filter="design" class="tag-mini">Design</button></li>
+            <li><button data-filter="productivity" class="tag-mini">Productivity</button></li>
+            <li><button data-filter="career" class="tag-mini">Career</button></li>
+          </ul>
+        </div>
+        <div class="card sidebar-card subscribe-card">
+          <h3 class="sidebar-title">Subscribe</h3>
+          <p class="mini">Prefer RSS? <a href="rss.xml">Add the feed</a>.</p>
+        </div>
+      </aside>
+    </div>
   </main>
 
   <footer class="site-footer">
