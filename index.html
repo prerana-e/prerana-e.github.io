@@ -11,19 +11,19 @@
 </head>
 <body class="sky">
   <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="index.html" aria-label="Home">PG</a>
+  <nav class="nav balanced">
+      <a class="brand" href="index.html" aria-label="Home">Prerana Gowda</a>
       <button class="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
-      <ul class="nav-links">
+  <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#skills">Skills</a></li>
   <li><a href="assets/resume/prerana-gowda-resume.pdf" download>Resume</a></li>
-  <li><a href="#contact" class="btn small btn-contact" data-scroll>Contact</a></li>
       </ul>
   <div class="nav-extra" aria-hidden="false"></div>
     </nav>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
   </header>
 
   <!-- Floating clouds / parallax layers -->
@@ -36,52 +36,31 @@
   </div>
 
   <main class="container">
-  <section class="hero enhanced" id="top" data-reveal>
-      <div class="hero-grid">
-        <div class="hero-col hero-text">
-          <h1><span class="hi">Hi, I’m</span> <span class="name">Prerana Gowda</span></h1>
-          <p class="tagline">Full‑stack engineer crafting AI‑assisted developer & network automation experiences with a bias toward shipping polished, reliable tools.</p>
-          <div class="hero-cta-row">
-            <div class="cta">
-              <a href="projects.html" class="btn">View Projects</a>
-              <a href="blog.html" class="btn ghost">Read Blog</a>
-            </div>
-            <ul class="metrics" aria-label="Quick stats">
-              <li><span class="metric-value">12+</span><span class="metric-label">Projects</span></li>
-              <li><span class="metric-value">5</span><span class="metric-label">Domains</span></li>
-              <li><span class="metric-value">3</span><span class="metric-label">AI Tools</span></li>
-            </ul>
-          </div>
-          <div class="meta-badges scroll-x">
-            <span class="badge">Java</span>
-            <span class="badge">Python</span>
-            <span class="badge">TypeScript</span>
-            <span class="badge">Angular</span>
-            <span class="badge">Spring Boot</span>
-            <span class="badge">PyTorch</span>
-            <span class="badge">RL</span>
-          </div>
+  <section class="hero minimal" id="top" data-reveal>
+      <figure class="hero-avatar" aria-label="Profile photograph">
+        <img src="assets/img/profile_photo.jpg" alt="Prerana Gowda" loading="lazy" />
+      </figure>
+      <div class="hero-main">
+        <h1><span class="hi">Hi, I’m</span> <span class="name">Prerana Gowda</span></h1>
+        <p class="tagline">Full‑stack engineer crafting AI‑assisted developer & network automation experiences with a bias toward shipping polished, reliable tools.</p>
+        <div class="hero-actions">
+          <a href="projects.html" class="btn">View Projects</a>
+          <a href="blog.html" class="btn ghost">Read Blog</a>
+          <a href="#contact" class="btn ghost btn-contact" data-scroll>Contact</a>
         </div>
-        <aside class="hero-col hero-side" aria-label="Profile overview">
-          <div class="profile-card tile">
-            <figure class="avatar-wrap">
-              <img src="assets/img/profile_photo.jpg" alt="Portrait illustration placeholder" class="avatar" loading="lazy" />
-            </figure>
-            <div class="profile-body">
-              <div class="current-focus">
-                <h3 class="subhead">Currently</h3>
-                <p>Building AI assistants & NSO tooling • Experimenting with RL reward shaping • Refining dev experience via thoughtful design tokens.</p>
-              </div>
-              <div class="quick-links">
-                <a href="projects.html#nso-bot" class="mini-link">AOS Support Bot →</a>
-                <a href="blog.html#mcp-nso" class="mini-link">MCP + NSO Deep Dive →</a>
-                <a href="blog.html?tag=ai" class="mini-link">AI Posts →</a>
-              </div>
-            </div>
-          </div>
-        </aside>
+        <ul class="metrics compact" aria-label="Quick stats">
+          <li><span class="metric-value">12+</span><span class="metric-label">Projects</span></li>
+          <li><span class="metric-value">5</span><span class="metric-label">Domains</span></li>
+          <li><span class="metric-value">3</span><span class="metric-label">AI Tools</span></li>
+        </ul>
+        <div class="meta-badges minimal-badges" aria-label="Key technologies">
+          <span class="badge">Python</span>
+          <span class="badge">TypeScript</span>
+          <span class="badge">Angular</span>
+          <span class="badge">Spring Boot</span>
+        </div>
       </div>
-      <div class="hero-glow" aria-hidden="true"></div>
+      <!-- Original complex hero content kept for reference (removed for minimalist variant) -->
     </section>
 
   <section id="about" class="card about-split" data-reveal>
@@ -257,5 +236,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <a href="#contact" class="contact-fab" data-scroll aria-label="Contact section">Contact</a>
 </body>
 </html>
