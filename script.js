@@ -38,6 +38,42 @@ document.querySelectorAll('a[data-scroll][href^="#"]').forEach(a=>{
 // Tilt effect (progressive enhancement) - reuses existing CSS transform hover
 // Optional: remove if not needed.// Tiny interactions for the sky + UI
 (function(){
+  // Hero-only initial view: hide other sections until first interaction or 3s
+  document.addEventListener('DOMContentLoaded',()=>{
+    // Only apply hero-only experience if the page explicitly opts in via class
+    if(!document.body.classList.contains('initial-hero-only')) return;
+    // If deep-linked (hash present) skip condensed hero state
+    if(location.hash && location.hash.length>1){
+      document.body.classList.remove('initial-hero-only');
+      return;
+    }
+    const exitHeroOnly=()=>{
+      if(!document.body.classList.contains('initial-hero-only')) return;
+      document.body.classList.add('initial-hero-only-transition');
+      document.body.offsetWidth; // force reflow
+      document.body.classList.remove('initial-hero-only');
+      window.removeEventListener('scroll',exitHeroOnlyPassive);
+      ['keydown'].forEach(evt=>window.removeEventListener(evt,exitHeroOnly));
+      hint && hint.remove();
+    };
+    const exitHeroOnlyPassive=()=>exitHeroOnly();
+    ['keydown'].forEach(evt=>window.addEventListener(evt,exitHeroOnly,{once:false,passive:true}));
+    window.addEventListener('scroll',exitHeroOnlyPassive,{passive:true});
+    let hint;
+    setTimeout(()=>{
+      if(!document.body.classList.contains('initial-hero-only')) return;
+      hint=document.createElement('button');
+      hint.type='button';
+      hint.className='explore-hint';
+      hint.innerHTML='<span>Move mouse or scroll ↓</span>';
+      document.body.appendChild(hint);
+      requestAnimationFrame(()=>hint.classList.add('show'));
+      hint.addEventListener('click',exitHeroOnly);
+    },3000);
+    if(window.scrollY>10){
+      exitHeroOnly();
+    }
+  });
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
   if(toggle && links){
@@ -86,16 +122,20 @@ document.querySelectorAll('a[data-scroll][href^="#"]').forEach(a=>{
       const stored=localStorage.getItem('theme');
       if(stored==='dark' || (!stored && prefersDark)) document.body.classList.add('theme-dark');
       const btn=document.createElement('button');
-      btn.className='theme-toggle';
-      function label(){ return document.body.classList.contains('theme-dark') ? '☀️ Light' : '🌙 Dark'; }
-      btn.textContent=label();
+      btn.className='theme-toggle theme-fab';
+      function sync(){
+        const dark=document.body.classList.contains('theme-dark');
+        btn.textContent= dark ? '☀️' : '🌙';
+        btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+        btn.setAttribute('title', btn.getAttribute('aria-label'));
+      }
+      sync();
       btn.addEventListener('click',()=>{
         document.body.classList.toggle('theme-dark');
         localStorage.setItem('theme', document.body.classList.contains('theme-dark') ? 'dark':'light');
-        btn.textContent=label();
+        sync();
       });
-      const extra=document.querySelector('.nav-extra');
-      (extra||document.querySelector('.nav-links'))?.appendChild(btn);
+      document.body.appendChild(btn);
     })();
 
     // Shrink / elevate header on scroll + active link highlight
