@@ -38,9 +38,14 @@
 .theme-dark .cloud{filter:blur(1px) brightness(.55)}
 
 /* Theme toggle */
-.theme-toggle{background:linear-gradient(120deg,var(--brand),var(--brand-2));color:#fff;border:0;padding:8px 14px;border-radius:14px;font:600 .7rem/1 Inter,system-ui,sans-serif;cursor:pointer;letter-spacing:.5px;display:inline-flex;align-items:center;gap:.4rem;box-shadow:var(--shadow);}
-.theme-toggle:focus-visible{outline:2px solid #fff;outline-offset:2px}
-.theme-dark .theme-toggle{background:linear-gradient(120deg,#234a69,#2f678d)}
+.theme-toggle{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:0;width:40px;height:40px;min-width:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-size:1.05rem;line-height:1;cursor:pointer;box-shadow:0 4px 14px -4px rgba(16,71,120,.35);transition:transform .25s ease, box-shadow .25s ease}
+.theme-toggle:hover{transform:translateY(-2px)}
+.theme-toggle:active{transform:translateY(0) scale(.95)}
+.theme-toggle:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.theme-dark .theme-toggle{background:linear-gradient(135deg,#234a69,#2f678d)}
+/* Floating bottom-right placement for theme toggle */
+.theme-fab{position:fixed;right:22px;bottom:24px;z-index:260}
+@media (max-width:640px){.theme-fab{right:16px;bottom:18px;width:46px;height:46px;font-size:1.15rem}}
 
 /* Lazy image */
 .lazy-img{opacity:0;transform:translateY(4px);transition:opacity .6s ease, transform .6s ease;filter:blur(8px)}
@@ -50,6 +55,27 @@
 /* html,body{height:100%} */
 html{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; font-feature-settings:'calt' 1,'liga' 1;}
 body{font-family:inherit;color:var(--ink);background:linear-gradient(180deg,var(--sky-1),var(--sky-2) 40%, var(--sky-3));overflow-x:hidden;line-height:1.55;font-weight:400;font-size:var(--step-0);} 
+/* Initial load: only show hero section */
+body.initial-hero-only .site-header,
+body.initial-hero-only main > section:not(.hero),
+body.initial-hero-only .site-footer,
+body.initial-hero-only .contact-fab{display:none}
+body.initial-hero-only .hero{min-height:100vh}
+@media (max-width:980px){body.initial-hero-only .hero{padding-top:4rem}}
+
+/* Smooth reveal of rest after exiting hero-only
+body.initial-hero-only-transition .site-header,
+body.initial-hero-only-transition main > section:not(.hero),
+body.initial-hero-only-transition .site-footer,
+body.initial-hero-only-transition .contact-fab{animation:fadeAll .65s cubic-bezier(.4,.2,.2,1) forwards;opacity:0}
+@keyframes fadeAll{to{opacity:1;transform:none}} */
+
+/* Explore hint button */
+.explore-hint{position:fixed;left:50%;bottom:38px;transform:translate(-50%,40px) scale(.6);opacity:0;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;border:0;padding:10px 18px;border-radius:28px;font:600 .75rem/1 Inter,system-ui,sans-serif;letter-spacing:.7px;text-transform:uppercase;box-shadow:0 10px 28px -10px rgba(16,71,120,.4);cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;z-index:260;transition:opacity .55s cubic-bezier(.4,.2,.2,1), transform .55s cubic-bezier(.4,.2,.2,1)}
+.explore-hint.show{opacity:1;transform:translate(-50%,0) scale(1)}
+.explore-hint:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (max-width:640px){.explore-hint{bottom:22px;padding:9px 16px;font-size:.65rem}}
+@media (prefers-reduced-motion:reduce){.explore-hint{transition:none}}
 /* Global typography */
 h1,h2,h3{font-family:'Playfair Display', Georgia, serif; font-weight:600; line-height:1.15; letter-spacing:.5px; margin:0 0 .65em;}
 h1{font-size:var(--step-3); font-weight:700;}
@@ -104,13 +130,21 @@ body.blog-page .clouds, body.projects-page .clouds{opacity:.4}
 .btn.ghost{background:transparent;border:2px solid var(--brand);color:var(--brand)}
 .btn.small{padding:8px 12px;font-size:.95rem}
 /* Nav extra area (theme toggle relocates here on wide screens) */
-.nav-extra{display:flex;align-items:center;gap:.6rem;margin-left:1rem}
-.nav-extra .theme-toggle{padding:6px 12px;font-size:.65rem;line-height:1;border-radius:14px}
+.nav-extra{display:flex;align-items:center;gap:.55rem;margin-left:auto;margin-right:0}
+.nav-extra .theme-toggle{display:none}
 /* Contact button variant with subtle glow */
 .btn-contact{position:relative;isolation:isolate;overflow:hidden;}
 .btn-contact::before{content:"";position:absolute;inset:-2px;background:linear-gradient(120deg,var(--brand) 0%,var(--brand-2) 50%,var(--brand) 100%);filter:blur(10px) opacity(.0);transition:filter .4s;z-index:-1}
 .btn-contact:hover::before{filter:blur(18px) opacity(.6)}
 .btn-contact:focus-visible{outline:3px solid var(--brand-2);outline-offset:2px}
+/* Contact button icon layout */
+.btn-contact{display:inline-flex;align-items:center;justify-content:center;padding:9px 24px;font-size:.9rem;font-weight:600;border-radius:999px;min-height:40px;line-height:1;gap:.6rem;letter-spacing:.5px;box-shadow:0 10px 24px -10px rgba(16,71,120,.55),0 6px 14px -6px rgba(16,71,120,.35),0 0 0 1px rgba(255,255,255,.35);background:linear-gradient(90deg,var(--brand) 0%,var(--brand-2) 100%)}
+.btn-contact .icon-mail{display:none}
+.btn-contact::before{display:none}
+.btn-contact:hover{transform:translateY(-3px);box-shadow:0 16px 34px -12px rgba(16,71,120,.55),0 8px 18px -8px rgba(16,71,120,.35),0 0 0 1px rgba(255,255,255,.4)}
+.btn-contact:active{transform:translateY(-1px)}
+/* Allow triggering same pulse animation on the contact button if desired */
+.btn-contact.pulsing{animation:sectionPulse 1.4s ease-out forwards}
 
 /* Floating contact action button */
 .contact-fab{position:fixed;right:24px;bottom:26px;z-index:250;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;font:600 .8rem/1 Inter,system-ui,sans-serif;padding:14px 18px;border-radius:30px;text-decoration:none;box-shadow:0 10px 32px -8px rgba(16,71,120,.35),0 4px 12px -4px rgba(16,71,120,.25);display:inline-flex;align-items:center;gap:.45rem;letter-spacing:.5px;transition:transform .25s, box-shadow .25s}
@@ -119,9 +153,13 @@ body.blog-page .clouds, body.projects-page .clouds{opacity:.4}
 @media (max-width:640px){.contact-fab{right:16px;bottom:18px;padding:12px 16px}}
 @media (prefers-reduced-motion:reduce){.contact-fab{transition:none}}
 
-/* Highlight animation when scrolled into view via Contact button */
-#contact.highlight-pulse{animation:sectionPulse 1.4s ease-out forwards}
+/* Highlight animation when scrolled into view via smooth scroll triggers */
+#contact.highlight-pulse,#about.highlight-pulse,#skills.highlight-pulse{animation:sectionPulse 1.4s ease-out forwards}
 @keyframes sectionPulse{0%{box-shadow:0 0 0 0 rgba(42,125,225,.55)}70%{box-shadow:0 0 0 18px rgba(42,125,225,0)}100%{box-shadow:0 0 0 0 rgba(42,125,225,0)}}
+
+/* Anchor offset: provide breathing room above About when navigated via hash */
+#about{scroll-margin-top:90px}
+#contact{scroll-margin-top:90px}
 
 .container{max-width:1100px;margin:auto;padding:28px 18px}
 .hero{position:relative;min-height:62vh;display:grid;place-items:center;text-align:center}
