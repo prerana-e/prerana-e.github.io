@@ -3,27 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Site Under Development</title>
+  <title>Temporarily Under Development • Prerana Gowda</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    body{display:flex;min-height:100dvh;align-items:center;justify-content:center;font-family:Inter,-apple-system,system-ui,sans-serif;background:linear-gradient(135deg,#1e2530,#111);color:#fff;margin:0;padding:2rem;}
-    .wrap{text-align:center;max-width:560px;}
-    h1{font-size:clamp(2.2rem,6vw,3.2rem);margin:0 0 1rem;font-weight:600;}
-    p{font-size:1.05rem;line-height:1.5;margin:0 0 1.25rem;color:#d0d4db;}
-    .pulse{display:inline-block;width:.75rem;height:.75rem;border-radius:50%;background:#ffbe3d;box-shadow:0 0 0 0 rgba(255,190,61,.6);animation:pulse 1.6s infinite;}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,190,61,.6);}70%{box-shadow:0 0 0 16px rgba(255,190,61,0);}100%{box-shadow:0 0 0 0 rgba(255,190,61,0);}}
-    a.btn{display:inline-block;margin-top:.5rem;background:#fff;color:#111;text-decoration:none;padding:.75rem 1.1rem;border-radius:.65rem;font-weight:500;box-shadow:0 4px 14px -6px rgba(0,0,0,.4);}a.btn:hover{background:#ffe9b0;color:#111;}
-    small{display:block;opacity:.6;margin-top:2rem;font-size:.75rem;letter-spacing:.5px;}
+    :root{--maint-accent:#ffbe3d;--maint-accent-2:#ffdd95}
+    body{min-height:100dvh;margin:0;display:flex;flex-direction:column;font-family:Inter,-apple-system,system-ui,sans-serif;background:linear-gradient(180deg,var(--sky-1),var(--sky-2) 40%, var(--sky-3));color:var(--ink);position:relative;overflow:hidden}
+    .cloud-bg{position:absolute;inset:0;pointer-events:none;opacity:.35;filter:blur(40px);background:radial-gradient(circle at 20% 30%,rgba(127,211,255,.55),transparent 60%),radial-gradient(circle at 75% 70%,rgba(42,125,225,.35),transparent 65%)}
+  .maint-shell{margin:auto;max-width:880px;width:100%;padding:clamp(1.8rem,4vw,3.4rem) clamp(1.4rem,3.2vw,3rem);position:relative;z-index:2}
+  .panel{background:linear-gradient(180deg,rgba(20,50,70,.92),rgba(14,35,55,.94));backdrop-filter:blur(14px) saturate(160%);border:1px solid rgba(127,211,255,.15);box-shadow:0 32px 60px -22px rgba(6,30,55,.55),0 8px 26px -8px rgba(10,40,70,.45);border-radius:46px;padding:clamp(1.9rem,3vw,2.9rem) clamp(1.6rem,3vw,3rem);position:relative;overflow:hidden}
+    .panel::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 88% 18%,rgba(127,211,255,.35),transparent 60%),radial-gradient(circle at 12% 82%,rgba(42,125,225,.18),transparent 65%);opacity:.8}
+  h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.4rem,4.8vw,3.5rem);line-height:1.05;margin:0 0 1rem;color:#f2f7fa;letter-spacing:.5px;text-shadow:0 4px 18px rgba(0,0,0,.55)}
+  .lede{font-size:clamp(1.08rem,1rem + .45vw,1.28rem);line-height:1.55;color:#b7c9d8;margin:0 0 1.4rem;max-width:62ch}
+  .note{font-size:.78rem;letter-spacing:.65px;text-transform:uppercase;font-weight:600;color:#90a6b8;display:inline-flex;align-items:center;gap:.55rem;margin:0 0 1.4rem}
+    .pulse{width:.75rem;height:.75rem;border-radius:50%;background:var(--maint-accent);box-shadow:0 0 0 0 rgba(255,190,61,.6);animation:pulse 1.6s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,190,61,.55)}70%{box-shadow:0 0 0 16px rgba(255,190,61,0)}100%{box-shadow:0 0 0 0 rgba(255,190,61,0)}}
+    .actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:.25rem}
+    .btn-main{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;text-decoration:none;padding:.85rem 1.25rem;font:600 .95rem/1 Inter,system-ui,sans-serif;border-radius:999px;letter-spacing:.5px;box-shadow:0 12px 32px -12px rgba(16,71,120,.45),0 6px 18px -8px rgba(16,71,120,.25);display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
+    .btn-main:hover{transform:translateY(-3px)}
+    .btn-alt{background:rgba(42,125,225,.08);color:var(--brand);border:1px solid rgba(42,125,225,.18);text-decoration:none;padding:.85rem 1.1rem;font:600 .85rem/1 Inter,system-ui,sans-serif;border-radius:16px;letter-spacing:.5px;display:inline-flex;align-items:center;gap:.5rem}
+    .btn-alt:hover{background:rgba(42,125,225,.12)}
+  .resume-btn{position:relative;border:1px solid rgba(255,190,61,.45);color:#ffd470;background:linear-gradient(120deg,rgba(255,190,61,.15),rgba(255,212,112,.12));box-shadow:0 0 0 1px rgba(255,190,61,.25),0 6px 18px -8px rgba(255,190,61,.4);}
+  .resume-btn::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at 82% 18%,rgba(255,212,112,.4),transparent 70%);mix-blend-mode:overlay;opacity:.6;pointer-events:none}
+  .resume-btn:hover{background:linear-gradient(120deg,rgba(255,190,61,.25),rgba(255,212,112,.18));box-shadow:0 0 0 1px rgba(255,190,61,.4),0 8px 22px -10px rgba(255,190,61,.55)}
+  .resume-icon{display:inline-flex}
+  .social-bar{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.85rem}
+  .social-btn{--bg:rgba(42,125,225,.08);--bd:rgba(42,125,225,.2);background:var(--bg);border:1px solid var(--bd);color:#d3e6f5;text-decoration:none;padding:.8rem 1rem .78rem;border-radius:15px;font:600 .72rem/1 Inter,system-ui,sans-serif;letter-spacing:.7px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.55rem;position:relative;overflow:hidden;transition:background .3s,border-color .3s,transform .3s}
+  .social-btn svg{width:18px;height:18px;stroke-width:1.8}
+  .social-btn:hover{background:rgba(42,125,225,.14);transform:translateY(-2px)}
+  .social-btn:focus-visible{outline:3px solid var(--brand-2);outline-offset:3px}
+  .social-btn.linkedin{--bg:linear-gradient(120deg,#0a66c2 0%,#0d7bff 90%);--bd:rgba(13,106,204,.7);color:#fff;border:1px solid rgba(13,106,204,.85);box-shadow:0 8px 22px -10px rgba(10,102,194,.55)}
+  .social-btn.linkedin:hover{filter:brightness(1.08)}
+  .social-btn.github{--bg:rgba(255,255,255,.08);--bd:rgba(255,255,255,.25);color:#fff}
+  .social-btn.github:hover{background:rgba(255,255,255,.13)}
+  .eta-box{margin-top:1.9rem;display:flex;flex-wrap:wrap;align-items:center;gap:.85rem;font-size:.95rem;line-height:1.45;color:#c9dae6;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:1rem 1.2rem;border-radius:22px;position:relative;overflow:hidden}
+  .eta-box::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 85% 30%,rgba(127,211,255,.18),transparent 65%),radial-gradient(circle at 10% 75%,rgba(42,125,225,.22),transparent 65%);mix-blend-mode:overlay;opacity:.6}
+  .eta-box strong{font:600 .65rem/1 Inter,system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,var(--brand),var(--brand-2));padding:.5rem .7rem .48rem;border-radius:14px;display:inline-flex;align-items:center;box-shadow:0 4px 14px -6px rgba(0,0,0,.4)}
+  footer{margin-top:2.6rem;font-size:.6rem;letter-spacing:.55px;text-transform:uppercase;color:#6f8596}
+    footer a{color:var(--brand);text-decoration:none;font-weight:600}
+    footer a:hover{text-decoration:underline}
+  .brand-line{font:600 .7rem/1 Inter,system-ui,sans-serif;letter-spacing:2.2px;text-transform:uppercase;color:#8fb9dc;display:block;margin:0 0 .9rem;opacity:.9}
+  @media (max-width:640px){.panel{padding:1.9rem 1.55rem;border-radius:28px}.actions{flex-direction:column;align-items:stretch}.btn-alt,.btn-main{justify-content:center;width:100%}.eta-box{flex-direction:column;align-items:flex-start}.social-btn{font-size:0;justify-content:center;width:54px;height:54px;padding:0}.social-btn svg{margin:0}.social-btn.linkedin,.social-btn.github{gap:0}}
+    @media (prefers-color-scheme:dark){body:not(.force-light){background:linear-gradient(180deg,var(--sky-1,#0d1822),var(--sky-2,#0f2030) 40%, var(--sky-3,#132b3f));color:var(--ink,#e6eef5)}body:not(.force-light) .panel{background:linear-gradient(180deg,#142736,rgba(20,39,54,.9));border-color:rgba(127,211,255,.18)}body:not(.force-light) .panel::before{background:radial-gradient(circle at 85% 18%,rgba(127,211,255,.25),transparent 60%),radial-gradient(circle at 15% 80%,rgba(127,211,255,.12),transparent 65%)}body:not(.force-light) .btn-alt{background:rgba(127,211,255,.12);border-color:rgba(127,211,255,.25)}body:not(.force-light) .btn-alt:hover{background:rgba(127,211,255,.18)}body:not(.force-light) .eta-box{background:linear-gradient(90deg,rgba(127,211,255,.12),rgba(127,211,255,.18));border-color:rgba(127,211,255,.28)}body:not(.force-light) .eta-box strong{background:rgba(127,211,255,.15);border-color:rgba(127,211,255,.3)}}
   </style>
 </head>
 <body>
-  <main class="wrap" role="alert" aria-live="polite">
-    <div class="pulse" aria-hidden="true"></div>
-    <h1>Oops — Sorry!</h1>
-    <p>Currently under development. It’ll be back up soon once I finish a few improvements.</p>
-    <p>If you need to reach me in the meantime, feel free to use the resume email or connect on LinkedIn.</p>
-    <a class="btn" href="index.html">Try Again</a>
-    <small>Temporary maintenance page · Not intended for indexing.</small>
+  <div class="cloud-bg" aria-hidden="true"></div>
+  <main class="maint-shell" role="alert" aria-live="polite">
+    <div class="panel">
+  <span class="brand-line">PRERANA GOWDA</span>
+      <div class="note"><span class="pulse" aria-hidden="true"></span><span>Status: Refresh in progress</span></div>
+      <h1>Heads up — polishing a few things.</h1>
+      <p class="lede">The site is temporarily under development while I ship a new iteration. It’ll be back online shortly with smoother navigation & improved accessibility.</p>
+      <div class="actions">
+        <a class="btn-main" href="index.html">Retry Home</a>
+        <a class="btn-alt" href="rss.xml">View RSS Feed</a>
+        <a class="btn-alt resume-btn" href="assets/resume/prerana-gowda-resume.pdf" download aria-label="Download Resume PDF">
+          <span class="resume-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M12 12v6"/><path d="M9 15h6"/></svg></span>
+          Resume PDF
+        </a>
+      </div>
+      <div class="eta-box"><strong>ETA</strong> <span>Within the next day. Deploy window kept intentionally short.</span></div>
+      <div class="social-bar" aria-label="Social links">
+        <a class="social-btn linkedin" href="https://www.linkedin.com/in/prerana-gowda" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a class="social-btn github" href="https://github.com/prerana-e" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in new tab)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 5v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+      <footer>Temporary maintenance page · Not indexed · <a href="mailto:your.email@example.com">Contact</a></footer>
+    </div>
   </main>
 </body>
 </html>
