@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Prerana Gowda Blog</title>
     <link>https://prerana-e.github.io/</link>
-    <description>Articles & notes by Prerana Gowda.</description>
+    <atom:link href="https://prerana-e.github.io/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Articles &amp; notes by Prerana Gowda.</description>
     <language>en-us</language>
-    <lastBuildDate>{{LAST_BUILD_DATE}}</lastBuildDate>
+    <lastBuildDate>Tue, 02 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Static hand-authored feed</generator>
+    <ttl>180</ttl>
     <item>
       <title>Bridging Model Context Protocol with Network Orchestration</title>
       <link>https://prerana-e.github.io/blog.html#mcp-nso</link>
