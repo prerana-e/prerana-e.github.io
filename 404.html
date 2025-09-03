@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site Under Development</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body{display:flex;min-height:100dvh;align-items:center;justify-content:center;font-family:Inter,-apple-system,system-ui,sans-serif;background:linear-gradient(135deg,#1e2530,#111);color:#fff;margin:0;padding:2rem;}
+    .wrap{text-align:center;max-width:560px;}
+    h1{font-size:clamp(2.2rem,6vw,3.2rem);margin:0 0 1rem;font-weight:600;}
+    p{font-size:1.05rem;line-height:1.5;margin:0 0 1.25rem;color:#d0d4db;}
+    .pulse{display:inline-block;width:.75rem;height:.75rem;border-radius:50%;background:#ffbe3d;box-shadow:0 0 0 0 rgba(255,190,61,.6);animation:pulse 1.6s infinite;}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,190,61,.6);}70%{box-shadow:0 0 0 16px rgba(255,190,61,0);}100%{box-shadow:0 0 0 0 rgba(255,190,61,0);}}
+    a.btn{display:inline-block;margin-top:.5rem;background:#fff;color:#111;text-decoration:none;padding:.75rem 1.1rem;border-radius:.65rem;font-weight:500;box-shadow:0 4px 14px -6px rgba(0,0,0,.4);}a.btn:hover{background:#ffe9b0;color:#111;}
+    small{display:block;opacity:.6;margin-top:2rem;font-size:.75rem;letter-spacing:.5px;}
+  </style>
+</head>
+<body>
+  <main class="wrap" role="alert" aria-live="polite">
+    <div class="pulse" aria-hidden="true"></div>
+    <h1>Oops — Sorry!</h1>
+    <p>Currently under development. It’ll be back up soon once I finish a few improvements.</p>
+    <p>If you need to reach me in the meantime, feel free to use the resume email or connect on LinkedIn.</p>
+    <a class="btn" href="index.html">Try Again</a>
+    <small>Temporary maintenance page · Not intended for indexing.</small>
+  </main>
+</body>
+</html>
