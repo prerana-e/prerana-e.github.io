@@ -134,11 +134,43 @@ document.querySelectorAll('a[data-scroll][href^="#"]').forEach(a=>{
       if(stored==='dark' || (!stored && prefersDark)) document.body.classList.add('theme-dark');
       const btn=document.createElement('button');
       btn.className='theme-toggle theme-fab';
+      const starCanvasId='starfield';
+      function drawStars(){
+        const dark=document.body.classList.contains('theme-dark');
+        const canvas=document.getElementById(starCanvasId);
+        if(!canvas) return;
+        if(!dark){
+          const ctx=canvas.getContext('2d');
+          ctx && ctx.clearRect(0,0,canvas.width,canvas.height);
+          return;
+        }
+        const dpr=window.devicePixelRatio||1;
+        canvas.width=window.innerWidth*dpr;
+        canvas.height=window.innerHeight*dpr;
+        canvas.style.width=window.innerWidth+'px';
+        canvas.style.height=window.innerHeight+'px';
+        const ctx=canvas.getContext('2d');
+        if(!ctx) return;
+        ctx.scale(dpr,dpr);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        const starsCount=Math.min(260, Math.round((window.innerWidth*window.innerHeight)/5000));
+        for(let i=0;i<starsCount;i++){
+          const x=Math.random()*window.innerWidth;
+            const y=Math.random()*window.innerHeight;
+            const r=Math.random()*1.2 + 0.3;
+            const alpha=Math.random()*0.8 + 0.2;
+            ctx.beginPath();
+            ctx.arc(x,y,r,0,Math.PI*2);
+            ctx.fillStyle=`rgba(255,255,255,${alpha})`;
+            ctx.fill();
+        }
+      }
       function sync(){
         const dark=document.body.classList.contains('theme-dark');
         btn.textContent= dark ? '☀️' : '🌙';
         btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
         btn.setAttribute('title', btn.getAttribute('aria-label'));
+        drawStars();
       }
       sync();
       btn.addEventListener('click',()=>{
@@ -147,6 +179,9 @@ document.querySelectorAll('a[data-scroll][href^="#"]').forEach(a=>{
         sync();
       });
       document.body.appendChild(btn);
+      window.addEventListener('resize',()=>{ if(document.body.classList.contains('theme-dark')) drawStars(); }, {passive:true});
+      // Redraw on orientation change for mobile
+      window.addEventListener('orientationchange',()=>{ setTimeout(drawStars,220); });
     })();
 
     // Shrink / elevate header on scroll + active link highlight
