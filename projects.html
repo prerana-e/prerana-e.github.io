@@ -76,7 +76,7 @@
             <!-- dynamic tag buttons injected -->
           </div>
           <div class="search-wrap">
-            <input type="search" id="projSearch" placeholder="Search…" aria-label="Search projects" />
+            <input type="search" id="projSearch" placeholder="Search projects or courses (e.g. cse190)" aria-label="Search projects or course codes" />
             <select id="projSort" aria-label="Sort projects">
               <option value="recent">Sort: Recent</option>
               <option value="az">Title A→Z</option>
@@ -84,48 +84,123 @@
             </select>
           </div>
         </div>
-        <div class="results-line"><span id="resultsCount">0</span> shown</div>
+  <div class="results-line"><span id="resultsCount">0</span> shown <span id="courseFilterChip" class="course-filter-chip" hidden></span></div>
       </div>
-      <div class="grid projects-grid" id="projectsGrid">
-        <article id="nso-bot" class="tile project fade-in tilt" tabindex="0" data-tags="backend ai automation" data-title="AOS Support Bot" data-date="2025-07-01" data-desc="Python FastMCP server exposing NSO RESTCONF as MCP tools for Azure OpenAI + Slack workflow automation.">
+  <div class="grid projects-grid" id="projectsGrid">
+        <!-- ACM Hack DiamondStaff Board Member -->
+  <article id="acm-diamondstaff" class="tile project fade-in tilt" tabindex="0" data-tags="leadership" data-courses="" data-title="ACM Hack DiamondStaff Board Member" data-date="2025-09-01" data-desc="ACM Hack DiamondStaff Board Member (Sept 2025 – Present)<br>• Led workshops on cloud computing, OAuth, backend engineering & iOS dev for 20–40+ attendees.<br>• Organized an industry careers panel with faculty; reviewed technical content for 10+ workshops/quarter (Docker, API integration).<br>• Assisted with DiamondHacks 2025 logistics & mentorship.">
           <figure class="proj-thumb">
-            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/nso-bot.jpg" alt="Screenshot of AOS Support Bot interface" class="lazy-img" width="480" height="300" loading="lazy" />
+            <img src="assets/img/placeholder-thumb.svg" alt="ACM Hack workshop session" class="lazy-img" width="480" height="300" loading="lazy" />
           </figure>
           <header class="proj-header">
-            <h3>AOS Support Bot</h3>
-            <span class="proj-badge">AI</span>
+            <h3>ACM Hack DiamondStaff Board Member</h3>
+            <span class="proj-badge">Role</span>
           </header>
-          <p>FastMCP server: NSO RESTCONF → safe MCP tools driving Azure OpenAI + Slack support flows.</p>
-          <ul class="stack-list"><li>Python</li><li>MCP</li><li>NSO</li></ul>
+          <p>Workshop leadership & event coordination (cloud, OAuth, backend, iOS).</p>
+          <ul class="stack-list"><li>Cloud</li><li>OAuth</li><li>Workshops</li></ul>
         </article>
-        <article id="package-display" class="tile project fade-in tilt" tabindex="0" data-tags="frontend backend dx" data-title="NSO Package Display" data-date="2025-05-12" data-desc="Angular/TS UI plus REST endpoints for visualizing packages and operational state, reducing manual checks.">
+        <!-- Habitizer Android Productivity App -->
+  <article id="habitizer" class="tile project fade-in tilt" tabindex="0" data-tags="mobile" data-courses="CSE 110" data-title="Habitizer" data-date="2025-03-15" data-desc="Habitizer (Jan–Mar 2025) Android productivity app.<br>• Habit tracking with routine customization, timers, goals, pause & real-time elapsed tracking.<br>• Persistence via SQLite; mock timer controls for testing; robust task CRUD (add/delete/reorder/rename).<br>• Ensures seamless UX & state durability across shutdowns/crashes.">
           <figure class="proj-thumb">
-            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/package-display.jpg" alt="NSO Package Display dashboard screenshot" class="lazy-img" width="480" height="300" loading="lazy" />
+            <img src="assets/img/placeholder-thumb.svg" alt="Habitizer Android app interface" class="lazy-img" width="480" height="300" loading="lazy" />
           </figure>
           <header class="proj-header">
-            <h3>NSO Package Display</h3>
-            <span class="proj-badge">DX</span>
+            <h3>Habitizer</h3>
+            <span class="proj-badge">App</span>
           </header>
-          <p>Angular/TS dashboard surfacing package metadata & oper state; tighter deploy feedback loops.</p>
-          <ul class="stack-list"><li>Angular</li><li>REST</li></ul>
+          <p>Android habit & routine tracker with resilient timers & SQLite persistence.</p>
+          <ul class="stack-list"><li>Java</li><li>Android</li><li>SQLite</li></ul>
         </article>
-        <article id="rl-traffic" class="tile project fade-in tilt" tabindex="0" data-tags="ml research rl" data-title="RL: Traffic Control" data-date="2025-04-10" data-desc="Reward shaping & generalization experiments for AV policies across multiple simulated traffic scenarios.">
+        <!-- Multi-Agent Traffic Simulation -->
+  <article id="multi-agent-traffic" class="tile project fade-in tilt" tabindex="0" data-tags="ai" data-courses="CSE 190 CSE 151A CSE 150B" data-title="Multi-Agent Traffic Simulation" data-date="2025-07-15" data-desc="Multi-agent autonomous vehicle traffic simulator with MARL coordination in Highway-Env.<br>• Studying policy coordination impact on flow & safety (collision, goal completion, lane adherence metrics).<br>• Benchmarking throughput using Waymo Open Dataset: global vs local policy trade-offs.<br>• Training single agents (Behavior Cloning, REINFORCE) then scaling to multi-agent systems.">
           <figure class="proj-thumb">
-            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/rl-traffic.jpg" alt="Visualization from RL traffic control experiment" class="lazy-img" width="480" height="300" loading="lazy" />
+            <img src="assets/img/placeholder-thumb.svg" alt="Highway multi-agent traffic simulation visualization" class="lazy-img" width="480" height="300" loading="lazy" />
           </figure>
           <header class="proj-header">
-            <h3>RL: Traffic Control</h3>
+            <h3>Multi-Agent Traffic Simulation</h3>
             <span class="proj-badge">Research</span>
           </header>
-            <p>Reward shaping & curriculum scheduling for multi‑scenario AV traffic policy stability.</p>
-          <ul class="stack-list"><li>PyTorch</li><li>RL</li></ul>
+          <p>MARL autonomous vehicle coordination & throughput analysis in Highway‑Env.</p>
+          <ul class="stack-list"><li>Python</li><li>PyTorch</li><li>Gymnasium</li><li>Highway-Env</li></ul>
+        </article>
+        <!-- Pacman Search & Value Iteration (CSE 190) -->
+  <article id="pacman-search-vi" class="tile project fade-in tilt" tabindex="0" data-tags="ai" data-courses="CSE 190" data-title="Pacman Search & Value Iteration" data-date="2025-09-03" data-desc="Implemented classical search + dynamic programming algorithms for UC Berkeley Pacman AI project (CSE 190).<br>• Added DFS, BFS, UCS, A* with consistent graph search (frontier + visited) yielding optimal paths where required.<br>• Engineered Value Iteration Agent over custom Pacman MDP (terminal pellet/ghost states) with configurable discount & iterations.<br>• Achieved 100/100 autograder score (all search + value iteration test suites passing).<br>• Clean separation of problem abstraction (SearchProblem, MDP) from algorithms; priority queue cost/heuristic ordering ensures admissibility.<br><span class='mini muted'>Source based on Berkeley Pacman framework (educational license).</span>">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" alt="Pacman grid illustrating search paths" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>Pacman Search & Value Iteration</h3>
+            <span class="proj-badge">AI</span>
+          </header>
+          <p>DFS, BFS, UCS, A*, and Value Iteration for Pacman MDP (100/100 score).</p>
+          <ul class="stack-list"><li>Python</li><li>Search</li><li>MDP</li></ul>
+        </article>
+        <!-- Action Castle & Custom Text Adventure (CSE 190 HW1) -->
+  <article id="action-castle-text-adventure" class="tile project fade-in tilt" tabindex="0" data-tags="ai" data-courses="CSE 190" data-title="Action Castle & Text Adventure Engine" data-date="2025-09-02" data-desc="Implemented classic parser-based interactive fiction engine & two games (Action Castle reimplementation + original design).<br>• Extended starter code: locations graph, items, inventory, blocks (locked door, darkness, guard/troll style obstacles) & special actions pipeline.<br>• Added BFS state-space explorer (immutable state tuples, action enumeration) for automatic plan finding and branching factor analytics.<br>• Authored PDDL domain/problem files (navigation, get/drop, fishing, feeding troll, unlocking, delivering rose) + STRIPS planning experiments.<br>• Visualized world graph via GraphViz + instrumented search depth/branch metrics and goal tests (crown worn, throne win state).<br>• Highlights search vs planning abstractions, precondition design, and scalability considerations in text adventure AI.">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" alt="Action Castle text adventure graph visualization placeholder" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>Action Castle & Text Adventure Engine</h3>
+            <span class="proj-badge">AI</span>
+          </header>
+          <p>Interactive fiction engine + BFS & PDDL planning (Action Castle + original game).</p>
+          <ul class="stack-list"><li>Python</li><li>BFS</li><li>PDDL</li><li>GraphViz</li></ul>
+        </article>
+        <!-- Mausritter AI Game Master (CSE 190 HW3) -->
+  <article id="mausritter-gm" class="tile project fade-in tilt" tabindex="0" data-tags="ai" data-courses="CSE 190" data-title="Mausritter AI Game Master" data-date="2025-09-04" data-desc="Built an AI Game Master for Mausritter TTRPG using Kani function-calling framework (CSE 190 HW3).<br>• Implemented dice rolling (d20 lib), structured character creation (Mouse dataclass) & save mechanics (adv / disadv).<br>• Exposed typed Python tools (@ai_function) for rolling, mouse generation & stat-based checks; GPT-4 orchestrates narrative + calls.<br>• Added image generation prompt pipeline (DALL·E 3) for character portrait and structured vs unstructured GM comparison experiment.<br>• Demonstrates LLM tool-use, stateful agent design & separation of narrative vs rules logic.">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" alt="Mausritter AI Game Master interaction screenshot placeholder" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>Mausritter AI Game Master</h3>
+            <span class="proj-badge">AI</span>
+          </header>
+          <p>Kani-based LLM GM: character creation, dice saves, narrative tool calling.</p>
+          <ul class="stack-list"><li>Python</li><li>Kani</li><li>OpenAI</li></ul>
+        </article>
+        <!-- TextWorld RL Agents (CSE 190 HW2) -->
+  <article id="textworld-rl" class="tile project fade-in tilt" tabindex="0" data-tags="ai" data-courses="CSE 190" data-title="TextWorld RL Agents" data-date="2025-09-04" data-desc="Implemented tabular Q-Learning & Deep Q-Network agents for TextWorld-Express interactive fiction tasks (coin & mapreader).<br>• Engineered state parsing (observation + inventory) + epsilon-greedy policy with episodic returns tracking.<br>• Extended to DQN: RNN (GRU) state encoder + experience replay + target network sync & epsilon decay.<br>• Evaluated robustness across stochastic action noise (25%) & punishment environments (illegal action penalties).<br>• Highlights sample efficiency trade-offs, stability via target network, and text state representation constraints.">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" alt="TextWorld RL agent architecture diagram placeholder" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>TextWorld RL Agents</h3>
+            <span class="proj-badge">RL</span>
+          </header>
+          <p>Tabular Q-Learning & DQN for TextWorld-Express (coin & mapreader).</p>
+          <ul class="stack-list"><li>Python</li><li>RL</li><li>PyTorch</li></ul>
+        </article>
+        <!-- PunchLines Hackathon Project -->
+  <article id="punchlines" class="tile project fade-in tilt" tabindex="0" data-tags="ai" data-courses="CSE 110" data-title="PunchLines" data-date="2025-02-02" data-desc="Full-stack AI debate training platform (UCLA Hackathon).<br>• Roblox 3D experience + React/Tailwind web UI with dual AI agents for real-time feedback.<br>• Gemini API prompt-engineered evaluation of user arguments and rebuttals.<br>• Interactive hooks-driven components, animated feedback, scalable component system.">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" alt="PunchLines AI debate training platform UI" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>PunchLines</h3>
+            <span class="proj-badge">Hackathon</span>
+          </header>
+          <p>AI debate training platform combining Roblox world + React UI + Gemini analysis.</p>
+          <ul class="stack-list"><li>React</li><li>Gemini</li><li>Roblox</li><li>Tailwind</li></ul>
+        </article>
+        <!-- Multimodal Recognition Systems -->
+  <article id="multimodal-recognition" class="tile project fade-in tilt" tabindex="0" data-tags="ai" data-courses="CSE 151A CSE 150B" data-title="Multimodal Recognition Systems" data-date="2024-11-20" data-desc="Suite of high-performance recognition systems (audio • face • semantic image).<br>• Audio: NFFT-4096 spectrogram fingerprinting & fanout matching (sub-100ms, O(log N) across 1K+ DB).<br>• Face: MTCNN + InceptionResnetV1 embeddings (>95% accuracy) + large-scale clustering (Whispers).<br>• Image: 512-D ResNet-18 + 200-D GloVe margin ranking network (85% semantic query accuracy).">
+          <figure class="proj-thumb">
+            <img src="assets/img/placeholder-thumb.svg" alt="Visualization of multimodal recognition components" class="lazy-img" width="480" height="300" loading="lazy" />
+          </figure>
+          <header class="proj-header">
+            <h3>Multimodal Recognition Systems</h3>
+            <span class="proj-badge">AI</span>
+          </header>
+          <p>Audio, face & semantic image retrieval pipelines with optimized embeddings.</p>
+          <ul class="stack-list"><li>PyTorch</li><li>Whisper</li><li>ResNet</li><li>MTCNN</li></ul>
         </article>
       </div>
     </section>
     </div>
     <aside class="card courses-card" id="courses" data-reveal aria-labelledby="coursesTitle">
       <h2 id="coursesTitle">Course Timeline</h2>
-      <p class="mini muted">Core university coursework (recent → older). Auto-generated from data array.</p>
+      <p class="mini muted">Core university coursework (recent → older). <span class="gpa-badge" aria-label="Cumulative GPA 3.8">GPA 3.8</span></p>
       <ol class="course-timeline" id="courseTimeline" aria-label="Course timeline"></ol>
     </aside>
   </main>
@@ -168,15 +243,35 @@
         filterBar.appendChild(btn);
       });
       const activeTags=new Set(); // empty => all
+      let activeCourse=""; // course code filter (e.g., 'CSE 110')
+      const courseChip=document.getElementById('courseFilterChip');
+      function updateCourseChip(){
+        if(!activeCourse){ courseChip.hidden=true; courseChip.textContent=""; return; }
+        courseChip.hidden=false;
+        courseChip.innerHTML=`<span class="cf-label">${activeCourse}</span><button type="button" aria-label="Remove course filter" class="cf-x">×</button>`;
+      }
       function apply(){
         const q=(search.value||'').toLowerCase();
         let visible=0, ai=0, dx=0;
         cards.forEach(card=>{
           const tags=(card.dataset.tags||'').split(/\s+/);
+          const rawCourses = card.dataset.courses||'';
+          // Extract full course codes like 'CSE 190', 'CSE 151A' etc.
+          const courseCodes = rawCourses.match(/[A-Za-z]{2,}\s*\d+[A-Za-z]?/g) || [];
           const title=card.dataset.title.toLowerCase();
           const matchesTags=activeTags.size===0 || [...activeTags].every(t=>tags.includes(t));
-          const matchesSearch=!q||title.includes(q);
-          const show=matchesTags && matchesSearch;
+          let matchesSearch=true;
+          if(q){
+            const qNorm=q.replace(/[^a-z0-9]/g,'');
+            const titleMatch=title.includes(q);
+            const courseMatch=courseCodes.some(c=>{
+              const cNorm=c.toLowerCase().replace(/[^a-z0-9]/g,'');
+              return cNorm.includes(qNorm) || qNorm.includes(cNorm);
+            });
+            matchesSearch=titleMatch || courseMatch;
+          }
+          const matchesCourse=!activeCourse || courseCodes.some(c=>c.toLowerCase().replace(/\s+/g,'')===activeCourse.toLowerCase().replace(/\s+/g,''));
+          const show=matchesTags && matchesSearch && matchesCourse;
           card.classList.toggle('hidden-card', !show);
           if(show){
             visible++;
@@ -188,6 +283,7 @@
         const mt=document.getElementById('metricTotal'); if(mt) mt.textContent=cards.length;
         const mai=document.getElementById('metricAI'); if(mai) mai.textContent=ai;
         const mdx=document.getElementById('metricDX'); if(mdx) mdx.textContent=dx;
+        updateCourseChip();
       }
       filterBar.addEventListener('click',e=>{
         const btn=e.target.closest('.seg-btn'); if(!btn) return;
@@ -213,6 +309,41 @@
         else if(sort.value==='za'){ cards.sort((a,b)=> b.dataset.title.localeCompare(a.dataset.title)); }
         cards.forEach(c=>grid.appendChild(c));
       });
+      // Course tag click filtering (delegate on course timeline)
+      document.addEventListener('click',e=>{
+        const tagEl=e.target.closest('.course-tag');
+        if(tagEl){
+          const cc=tagEl.textContent.trim();
+          // Normalize: ensure single space between letters prefix and number
+          const norm=cc.replace(/([A-Za-z]{2,})(\s*)(\d+)/,(m,a,sp,b)=>`${a.toUpperCase()} ${b}`);
+          if(norm===activeCourse) activeCourse=""; else activeCourse=norm;
+          apply();
+          flashCourseMatches(norm);
+        }
+        const courseTitleEl=e.target.closest('.course-title');
+        if(courseTitleEl){
+          const raw=courseTitleEl.textContent.split('•')[0].trim();
+          const norm=raw.replace(/([A-Za-z]{2,})(\s*)(\d+[A-Za-z]?)/,(m,a,sp,b)=>`${a.toUpperCase()} ${b}`);
+          if(norm===activeCourse) activeCourse=""; else activeCourse=norm;
+          apply();
+          document.getElementById('all')?.scrollIntoView({behavior:'smooth'});
+          flashCourseMatches(norm);
+        }
+        if(e.target.classList?.contains('cf-x')){ activeCourse=""; apply(); }
+      });
+      function flashCourseMatches(code){
+        const norm=code.toLowerCase().replace(/\s+/g,'');
+        requestAnimationFrame(()=>{
+          cards.forEach(card=>{
+            if(card.classList.contains('hidden-card')) return;
+            const dc=(card.dataset.courses||'').toLowerCase().replace(/\s+/g,'');
+            if(dc.includes(norm)){
+              card.classList.add('course-match-flash');
+              setTimeout(()=>card.classList.remove('course-match-flash'),1600);
+            }
+          });
+        });
+      }
       const overlay=document.createElement('div'); overlay.className='proj-modal-overlay'; overlay.innerHTML='<div class="proj-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close-modal" aria-label="Close">×</button><div class="modal-content"></div></div>';
       document.body.appendChild(overlay);
       const closeBtn=overlay.querySelector('.close-modal');
@@ -247,15 +378,24 @@
       apply();
       // Course timeline data & render
       const courseData=[
-        { code:'CSE 101', title:'Design & Analysis of Algorithms', term:'Fall 2024', area:['algorithms','core'] },
-        { code:'CSE 140', title:'Components & Design Techniques for Digital Systems', term:'Fall 2024', area:['hardware'] },
-        { code:'CSE 141', title:'Computer Architecture', term:'Winter 2025', area:['systems'] },
-        { code:'CSE 150', title:'Intro to AI: Search & Reasoning', term:'Winter 2025', area:['ai'] },
-        { code:'CSE 151', title:'Intro to Machine Learning', term:'Spring 2025', area:['ml','ai'] },
-        { code:'CSE 158', title:'Recommender Systems & Web Mining', term:'Spring 2025', area:['ml'] },
-        { code:'CSE 134B', title:'Web Client Languages', term:'Spring 2025', area:['frontend','web'] },
-        { code:'CSE 167', title:'Computer Graphics', term:'Planned', area:['graphics'], planned:true },
-        { code:'CSE 202', title:'Advanced Data Structures', term:'Planned', area:['advanced','algorithms'], planned:true }
+        // Most recent / upcoming (planned or in-progress, grades pending)
+        { code:'CSE 120', title:'Operating Systems Principles', term:'Fall 2025', area:['systems'], planned:true },
+        { code:'CSE 132A', title:'Database System Principles', term:'Fall 2025', area:['databases'], planned:true },
+        { code:'CSE 158R', title:'Recommender Systems & Web Mining', term:'Fall 2025', area:['ml','data'], planned:true },
+        { code:'CSE 167', title:'Computer Graphics', term:'Fall 2025', area:['graphics'], planned:true },
+        // Completed 2025
+        { code:'CSE 150B', title:'AI: Search and Reasoning', term:'Spring 2025', grade:'A', area:['ai','search'] },
+        { code:'CSE 151A', title:'ML: Learning Algorithms', term:'Spring 2025', grade:'A-', area:['ml','ai'] },
+        { code:'CSE 190', title:'Deep Reinforcement Learning (Topics)', term:'Spring 2025', grade:'A', area:['ml','ai','rl'] },
+        { code:'CSE 101', title:'Design & Analysis of Algorithms', term:'Winter 2025', grade:'B+', area:['algorithms','core'] },
+        { code:'CSE 105', title:'Theory of Computation', term:'Winter 2025', grade:'A-', area:['theory'] },
+        { code:'CSE 110', title:'Software Engineering', term:'Winter 2025', grade:'A-', area:['software','team'] },
+        { code:'MATH 183', title:'Statistical Methods', term:'Winter 2025', grade:'A', area:['math','stats'] },
+        // 2024
+        { code:'CSE 29', title:'Systems Programming & Software Tools', term:'Fall 2024', grade:'A+', area:['systems','tools'] },
+        { code:'CSE 100', title:'Advanced Data Structures', term:'Fall 2024', grade:'A-', area:['algorithms','core'] },
+        { code:'SOCI 153', title:'Urban Sociology', term:'Fall 2024', grade:'A-', area:['ge','humanities'] },
+        { code:'CSE 21', title:'Mathematics for Algorithms & Systems Analysis', term:'Summer II 2024', grade:'A+', area:['math','foundations'] },
       ];
       const timelineEl=document.getElementById('courseTimeline');
       if(timelineEl){
@@ -271,6 +411,7 @@
           map.get(term).forEach(c=>{
             const li=document.createElement('li');
             if(c.planned) li.classList.add('planned');
+            li.dataset.course=c.code;
             li.style.setProperty('--i', idx++);
             li.innerHTML=`<div class="course-head"><span class="course-title">${c.code} • ${c.title}</span><span class="course-term">${c.term}</span></div>`;
             if(c.area?.length){
@@ -279,6 +420,7 @@
               c.area.forEach(tag=>{
                 const span=document.createElement('span');
                 span.className='course-tag';
+                span.dataset.tag=tag;
                 span.textContent=tag;
                 tags.appendChild(span);
               });
@@ -287,6 +429,23 @@
             timelineEl.appendChild(li);
           });
         });
+        // Scroll reveal for course items (excluding group headers)
+        const courseItems=[...timelineEl.querySelectorAll('li:not(.course-group)')];
+  const io=new IntersectionObserver(entries=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{rootMargin:'0px 0px -10% 0px', threshold:0});
+        courseItems.forEach(ci=>io.observe(ci));
+        // Progress fill variable update
+        function updateCourseProgress(){
+          const rect=timelineEl.getBoundingClientRect();
+          const vh=window.innerHeight || document.documentElement.clientHeight;
+            const total=rect.height;
+            const entered=Math.min(Math.max(vh - Math.max(rect.top,0),0), total);
+            const pct= total ? (entered/total)*100 : 0;
+            timelineEl.style.setProperty('--ct-progress', pct.toFixed(2));
+        }
+        ['scroll','resize'].forEach(ev=>window.addEventListener(ev,()=>requestAnimationFrame(updateCourseProgress),{passive:true}));
+        updateCourseProgress();
       }
     })();
   </script>

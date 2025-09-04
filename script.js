@@ -310,6 +310,41 @@ document.querySelectorAll('a[data-scroll][href^="#"]').forEach(a=>{
   });
 })();
 
+// Timeline scroll progress spine
+(function(){
+  const tl=document.querySelector('.timeline');
+  if(!tl) return;
+  const items=[...tl.querySelectorAll('.timeline-item')];
+  let activeIndex=-1;
+  function update(){
+    const rect=tl.getBoundingClientRect();
+    const vh=window.innerHeight || document.documentElement.clientHeight;
+    const total=rect.height; // total pixel height of list
+    // Amount scrolled into the timeline viewport-wise
+    const entered = Math.min(Math.max(vh - Math.max(rect.top,0), 0), total);
+    const progress = total ? (entered / total) * 100 : 0; // percent
+    tl.style.setProperty('--tl-progress', progress.toFixed(2));
+    // Active node detection: closest item center to viewport center
+    const centerY=vh/2;
+    let bestIdx=-1; let bestDist=Infinity;
+    items.forEach((it,i)=>{
+      const r=it.getBoundingClientRect();
+      const mid=r.top + r.height/2;
+      const dist=Math.abs(mid-centerY);
+      if(dist<bestDist){bestDist=dist;bestIdx=i;}
+      // passed if item midpoint is above center
+      if(mid < centerY - 10) it.classList.add('passed'); else it.classList.remove('passed');
+    });
+    if(bestIdx!==activeIndex){
+      if(activeIndex>=0) items[activeIndex].classList.remove('active');
+      activeIndex=bestIdx;
+      if(activeIndex>=0) items[activeIndex].classList.add('active','passed');
+    }
+  }
+  ['scroll','resize'].forEach(ev=>window.addEventListener(ev,()=>requestAnimationFrame(update),{passive:true}));
+  update();
+})();
+
 // Blog enhancements: reading time + filtering
 (function(){
   const blog=document.querySelector('.blog-page');
