@@ -35,7 +35,10 @@
 .theme-dark .btn.ghost{border-color:var(--brand);color:var(--brand)}
 .theme-dark .btn-contact::before{background:linear-gradient(120deg,#5aa9ff 0%,#7fd3ff 50%,#5aa9ff 100%)}
 .theme-dark .proj-modal-overlay{background:rgba(0,0,0,.55)}
-.theme-dark .cloud{filter:blur(1px) brightness(.55)}
+.theme-dark .clouds{display:none}
+/* Starfield in dark mode */
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;display:none;background:transparent}
+.theme-dark .stars{display:block;}
 
 /* Theme toggle */
 .theme-toggle{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:0;width:40px;height:40px;min-width:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-size:1.05rem;line-height:1;cursor:pointer;box-shadow:0 4px 14px -4px rgba(16,71,120,.35);transition:transform .25s ease, box-shadow .25s ease}
@@ -94,6 +97,8 @@ pre{background:rgba(42,125,225,.08);padding:1rem;border-radius:14px;overflow:aut
 .site-header.hide{transform:translateY(-110%)}
 .site-header::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(42,125,225,.12),rgba(127,211,255,.12) 55%,rgba(42,125,225,.12));opacity:.4}
 .site-header.nav-scrolled{background:rgba(255,255,255,.82);box-shadow:0 4px 18px -6px rgba(16,71,120,.25)}
+.theme-dark .site-header.nav-scrolled{background:rgba(20,39,54,.9);box-shadow:0 4px 22px -6px rgba(0,0,0,.55);border-bottom:1px solid rgba(127,211,255,.2)}
+.theme-dark .site-header::after{background:linear-gradient(90deg,rgba(127,211,255,.12),rgba(90,169,255,.12) 55%,rgba(127,211,255,.12));opacity:.25}
 .site-header .scroll-progress{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,rgba(42,125,225,.25),rgba(127,211,255,.25));overflow:hidden}
 .site-header .scroll-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-2));transition:width .15s linear}
 @media (prefers-reduced-motion:reduce){.site-header{transition:none}.site-header .scroll-progress span{transition:none}}
