@@ -9,32 +9,67 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="sky projects-page">
+<body class="sky projects-page projects-intro-only">
   <header class="site-header">
-  <nav class="nav balanced">
-      <a class="brand" href="index.html">PG</a>
+    <nav class="nav balanced">
+      <a class="brand" href="index.html" aria-label="Home"> PG </a>
       <button class="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
       <ul class="nav-links">
-  <li><a href="index.html#about">About</a></li>
-  <li><a href="projects.html" aria-current="page">Projects</a></li>
-  <li><a href="blog.html">Blog</a></li>
-  <li><a href="index.html#skills">Skills</a></li>
-  <li><a href="assets/resume/prerana-gowda-resume.pdf" download>Resume</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="assets/resume/prerana-gowda-resume.pdf" download>Resume</a></li>
       </ul>
-  <div class="nav-extra" aria-hidden="false"><a href="index.html#contact" class="btn btn-contact" aria-label="Contact"><span class="icon-mail" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" ry="2"/><polyline points="3,7 12,13 21,7"/></svg></span><span class="label">Contact</span></a></div>
+      <div class="nav-extra" aria-hidden="false"><a href="index.html#contact" class="btn btn-contact" aria-label="Contact"><span class="icon-mail" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" ry="2"/><polyline points="3,7 12,13 21,7"/></svg></span><span class="label">Contact</span></a></div>
+      <div class="scroll-progress" aria-hidden="true"><span></span></div>
     </nav>
   </header>
 
+  <!-- Floating clouds / parallax layers (full set) -->
   <div class="clouds" aria-hidden="true">
     <div class="cloud c1"></div>
     <div class="cloud c2"></div>
     <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+    <div class="cloud c5"></div>
+  <!-- Additional lighter layer clouds (projects page only) -->
+  <div class="cloud c6"></div>
+  <div class="cloud c7"></div>
+  <div class="cloud c8"></div>
+  <div class="cloud c9"></div>
   </div>
+  <!-- Starfield for dark theme parity -->
+  <canvas id="starfield" class="stars" aria-hidden="true"></canvas>
 
-  <main class="container">
-    <section class="card projects-card">
+  <main class="container projects-layout">
+    <div class="projects-main">
+    <!-- Projects Hero / Intro -->
+    <section class="hero minimal projects-hero" id="top" data-reveal>
+      <div class="hero-main">
+        <h1><span class="hi">Selected & Archived</span><span class="name">Projects</span></h1>
+        <p class="tagline">AI‑assisted developer tooling, network automation surfaces, and research experiments with a focus on reliability & crisp operator ergonomics.</p>
+        <ul class="metrics compact">
+          <li><span class="metric-value" id="metricTotal">0</span><span class="metric-label">Total</span></li>
+          <li><span class="metric-value" id="metricAI">0</span><span class="metric-label">AI</span></li>
+          <li><span class="metric-value" id="metricDX">0</span><span class="metric-label">DX</span></li>
+        </ul>
+        <div class="hero-actions">
+          <a href="#all" class="btn" data-scroll>Jump to List</a>
+          <a href="index.html#contact" class="btn ghost" data-scroll>Get in Touch</a>
+        </div>
+        <div class="meta-badges minimal-badges">
+          <span class="badge">Python</span>
+          <span class="badge">TypeScript</span>
+          <span class="badge">Angular</span>
+          <span class="badge">RL</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card projects-card" id="all" data-reveal>
       <div class="projects-head">
-        <h2>Projects</h2>
+  <h2 class="sr-only">Project Explorer</h2>
         <div class="projects-controls" role="toolbar" aria-label="Project filters and search">
           <div class="segmented multi" id="filterBar" aria-label="Tag filters">
             <button class="seg-btn active" data-filter="all" aria-pressed="true">All</button>
@@ -52,7 +87,7 @@
         <div class="results-line"><span id="resultsCount">0</span> shown</div>
       </div>
       <div class="grid projects-grid" id="projectsGrid">
-        <article id="nso-bot" class="tile project fade-in" tabindex="0" data-tags="backend ml ai" data-title="AOS Support Bot" data-date="2025-07-01" data-desc="Python FastMCP server exposing NSO RESTCONF as MCP tools for Azure OpenAI + Slack workflow automation.">
+        <article id="nso-bot" class="tile project fade-in tilt" tabindex="0" data-tags="backend ai automation" data-title="AOS Support Bot" data-date="2025-07-01" data-desc="Python FastMCP server exposing NSO RESTCONF as MCP tools for Azure OpenAI + Slack workflow automation.">
           <figure class="proj-thumb">
             <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/nso-bot.jpg" alt="Screenshot of AOS Support Bot interface" class="lazy-img" width="480" height="300" loading="lazy" />
           </figure>
@@ -60,10 +95,10 @@
             <h3>AOS Support Bot</h3>
             <span class="proj-badge">AI</span>
           </header>
-          <p>Python FastMCP server exposing NSO RESTCONF as tools, integrated with Azure OpenAI + Slack.</p>
+          <p>FastMCP server: NSO RESTCONF → safe MCP tools driving Azure OpenAI + Slack support flows.</p>
           <ul class="stack-list"><li>Python</li><li>MCP</li><li>NSO</li></ul>
         </article>
-        <article id="package-display" class="tile project fade-in" tabindex="0" data-tags="frontend backend dx" data-title="NSO Package Display" data-date="2025-05-12" data-desc="Angular/TS UI plus REST endpoints for visualizing packages and operational state, reducing manual checks.">
+        <article id="package-display" class="tile project fade-in tilt" tabindex="0" data-tags="frontend backend dx" data-title="NSO Package Display" data-date="2025-05-12" data-desc="Angular/TS UI plus REST endpoints for visualizing packages and operational state, reducing manual checks.">
           <figure class="proj-thumb">
             <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/package-display.jpg" alt="NSO Package Display dashboard screenshot" class="lazy-img" width="480" height="300" loading="lazy" />
           </figure>
@@ -71,10 +106,10 @@
             <h3>NSO Package Display</h3>
             <span class="proj-badge">DX</span>
           </header>
-          <p>Angular/TS + REST endpoints to visualize packages & oper state—less manual checks, clearer deploys.</p>
-            <ul class="stack-list"><li>Angular</li><li>REST</li></ul>
+          <p>Angular/TS dashboard surfacing package metadata & oper state; tighter deploy feedback loops.</p>
+          <ul class="stack-list"><li>Angular</li><li>REST</li></ul>
         </article>
-        <article id="rl-traffic" class="tile project fade-in" tabindex="0" data-tags="ml research rl" data-title="RL: Traffic Control" data-date="2025-04-10" data-desc="Reward shaping & generalization experiments for AV policies across multiple simulated traffic scenarios.">
+        <article id="rl-traffic" class="tile project fade-in tilt" tabindex="0" data-tags="ml research rl" data-title="RL: Traffic Control" data-date="2025-04-10" data-desc="Reward shaping & generalization experiments for AV policies across multiple simulated traffic scenarios.">
           <figure class="proj-thumb">
             <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/rl-traffic.jpg" alt="Visualization from RL traffic control experiment" class="lazy-img" width="480" height="300" loading="lazy" />
           </figure>
@@ -82,42 +117,38 @@
             <h3>RL: Traffic Control</h3>
             <span class="proj-badge">Research</span>
           </header>
-          <p>Reward shaping & generalization experiments for AV policies across multi-scenario environments.</p>
-          <ul class="stack-list"><li>PyTorch</li><li>RL</li></ul>
-        </article>
-        <article id="rl-traffic" class="tile project fade-in" tabindex="0" data-tags="ml research rl" data-title="RL: Traffic Control" data-date="2025-04-10" data-desc="Reward shaping & generalization experiments for AV policies across multiple simulated traffic scenarios.">
-          <figure class="proj-thumb">
-            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/rl-traffic.jpg" alt="Visualization from RL traffic control experiment" class="lazy-img" width="480" height="300" loading="lazy" />
-          </figure>
-          <header class="proj-header">
-            <h3>RL: Traffic Control</h3>
-            <span class="proj-badge">Research</span>
-          </header>
-          <p>Reward shaping & generalization experiments for AV policies across multi-scenario environments.</p>
-          <ul class="stack-list"><li>PyTorch</li><li>RL</li></ul>
-        </article>
-        <article id="rl-traffic" class="tile project fade-in" tabindex="0" data-tags="ml research rl" data-title="RL: Traffic Control" data-date="2025-04-10" data-desc="Reward shaping & generalization experiments for AV policies across multiple simulated traffic scenarios.">
-          <figure class="proj-thumb">
-            <img src="assets/img/placeholder-thumb.svg" data-src="assets/img/projects/rl-traffic.jpg" alt="Visualization from RL traffic control experiment" class="lazy-img" width="480" height="300" loading="lazy" />
-          </figure>
-          <header class="proj-header">
-            <h3>RL: Traffic Control</h3>
-            <span class="proj-badge">Research</span>
-          </header>
-          <p>Reward shaping & generalization experiments for AV policies across multi-scenario environments.</p>
+            <p>Reward shaping & curriculum scheduling for multi‑scenario AV traffic policy stability.</p>
           <ul class="stack-list"><li>PyTorch</li><li>RL</li></ul>
         </article>
       </div>
     </section>
+    </div>
+    <aside class="card courses-card" id="courses" data-reveal aria-labelledby="coursesTitle">
+      <h2 id="coursesTitle">Course Timeline</h2>
+      <p class="mini muted">Core university coursework (recent → older). Auto-generated from data array.</p>
+      <ol class="course-timeline" id="courseTimeline" aria-label="Course timeline"></ol>
+    </aside>
   </main>
 
   <footer class="site-footer">
-    <p>© 2025 Prerana Gowda</p>
+    <p>© 2025 Prerana Gowda • <a href="rss.xml">RSS</a></p>
   </footer>
 
   <script src="script.js"></script>
   <script>
     (function(){
+      // Title-only initial state reveal handler
+      const body=document.body;
+      function triggerReveal(){
+        if(!body.classList.contains('projects-intro-only')) return;
+        body.classList.remove('projects-intro-only');
+        body.classList.add('projects-loaded');
+      }
+      ['scroll','wheel','touchstart'].forEach(evt=>window.addEventListener(evt,triggerReveal,{once:true,passive:true}));
+      window.addEventListener('keydown',e=>{
+        if(['ArrowDown','PageDown','Space','Enter','Tab'].includes(e.code||e.key)) triggerReveal();
+      },{once:true});
+      setTimeout(triggerReveal,7000);
       const filterBar=document.getElementById('filterBar');
       const search=document.getElementById('projSearch');
       const sort=document.getElementById('projSort');
@@ -125,7 +156,6 @@
       const grid=document.getElementById('projectsGrid');
       const cards=[...grid.querySelectorAll('.project')];
       cards.forEach((c,i)=>c.style.setProperty('--i',i));
-      // Build tag set
       const tagSet=new Set();
       cards.forEach(c=> (c.dataset.tags||'').split(/\s+/).forEach(t=>t&&tagSet.add(t)) );
       [...tagSet].sort().forEach(tag=>{
@@ -140,17 +170,24 @@
       const activeTags=new Set(); // empty => all
       function apply(){
         const q=(search.value||'').toLowerCase();
-        let visible=0;
+        let visible=0, ai=0, dx=0;
         cards.forEach(card=>{
           const tags=(card.dataset.tags||'').split(/\s+/);
-            const title=card.dataset.title.toLowerCase();
-            const matchesTags=activeTags.size===0 || [...activeTags].every(t=>tags.includes(t));
-            const matchesSearch=!q||title.includes(q);
-            const show=matchesTags && matchesSearch;
-            card.classList.toggle('hidden-card', !show);
-            if(show) visible++;
+          const title=card.dataset.title.toLowerCase();
+          const matchesTags=activeTags.size===0 || [...activeTags].every(t=>tags.includes(t));
+          const matchesSearch=!q||title.includes(q);
+          const show=matchesTags && matchesSearch;
+          card.classList.toggle('hidden-card', !show);
+          if(show){
+            visible++;
+            if(tags.includes('ai')) ai++;
+            if(tags.includes('dx')) dx++;
+          }
         });
         results.textContent=visible;
+        const mt=document.getElementById('metricTotal'); if(mt) mt.textContent=cards.length;
+        const mai=document.getElementById('metricAI'); if(mai) mai.textContent=ai;
+        const mdx=document.getElementById('metricDX'); if(mdx) mdx.textContent=dx;
       }
       filterBar.addEventListener('click',e=>{
         const btn=e.target.closest('.seg-btn'); if(!btn) return;
@@ -162,10 +199,8 @@
           apply();
           return;
         }
-        // toggle tag
         if(activeTags.has(tag)){ activeTags.delete(tag); btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
         else { activeTags.add(tag); btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
-        // handle All state
         const allBtn=filterBar.querySelector('.seg-btn[data-filter="all"]');
         if(activeTags.size===0){ allBtn.classList.add('active'); allBtn.setAttribute('aria-pressed','true'); }
         else { allBtn.classList.remove('active'); allBtn.setAttribute('aria-pressed','false'); }
@@ -178,10 +213,8 @@
         else if(sort.value==='za'){ cards.sort((a,b)=> b.dataset.title.localeCompare(a.dataset.title)); }
         cards.forEach(c=>grid.appendChild(c));
       });
-      // Quick view modal
       const overlay=document.createElement('div'); overlay.className='proj-modal-overlay'; overlay.innerHTML='<div class="proj-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close-modal" aria-label="Close">×</button><div class="modal-content"></div></div>';
       document.body.appendChild(overlay);
-      const modal=overlay.querySelector('.proj-modal');
       const closeBtn=overlay.querySelector('.close-modal');
       const content=overlay.querySelector('.modal-content');
       function open(card){
@@ -198,7 +231,6 @@
       overlay.addEventListener('click',e=>{ if(e.target===overlay) close(); });
       closeBtn.addEventListener('click',close);
       window.addEventListener('keydown',e=>{ if(e.key==='Escape' && overlay.classList.contains('open')) close(); });
-      // Keyboard arrow nav between cards
       grid.addEventListener('keydown',e=>{
         if(!['ArrowRight','ArrowLeft','ArrowDown','ArrowUp'].includes(e.key)) return;
         const focusable=cards.filter(c=>!c.classList.contains('hidden-card'));
@@ -210,10 +242,52 @@
           focusable[nextIdx].focus();
         }
       });
-      // Initial apply with recent sort
       sort.value='recent';
       sort.dispatchEvent(new Event('change'));
       apply();
+      // Course timeline data & render
+      const courseData=[
+        { code:'CSE 101', title:'Design & Analysis of Algorithms', term:'Fall 2024', area:['algorithms','core'] },
+        { code:'CSE 140', title:'Components & Design Techniques for Digital Systems', term:'Fall 2024', area:['hardware'] },
+        { code:'CSE 141', title:'Computer Architecture', term:'Winter 2025', area:['systems'] },
+        { code:'CSE 150', title:'Intro to AI: Search & Reasoning', term:'Winter 2025', area:['ai'] },
+        { code:'CSE 151', title:'Intro to Machine Learning', term:'Spring 2025', area:['ml','ai'] },
+        { code:'CSE 158', title:'Recommender Systems & Web Mining', term:'Spring 2025', area:['ml'] },
+        { code:'CSE 134B', title:'Web Client Languages', term:'Spring 2025', area:['frontend','web'] },
+        { code:'CSE 167', title:'Computer Graphics', term:'Planned', area:['graphics'], planned:true },
+        { code:'CSE 202', title:'Advanced Data Structures', term:'Planned', area:['advanced','algorithms'], planned:true }
+      ];
+      const timelineEl=document.getElementById('courseTimeline');
+      if(timelineEl){
+        // Group by term preserving order of appearance
+        const groups=[]; const map=new Map();
+        courseData.forEach(item=>{ if(!map.has(item.term)){ map.set(item.term,[]); groups.push(item.term);} map.get(item.term).push(item); });
+        let idx=0;
+        groups.forEach(term=>{
+          const gLi=document.createElement('li');
+          gLi.className='course-group';
+          gLi.innerHTML=`<span class="course-term-label">${term}</span>`;
+          timelineEl.appendChild(gLi);
+          map.get(term).forEach(c=>{
+            const li=document.createElement('li');
+            if(c.planned) li.classList.add('planned');
+            li.style.setProperty('--i', idx++);
+            li.innerHTML=`<div class="course-head"><span class="course-title">${c.code} • ${c.title}</span><span class="course-term">${c.term}</span></div>`;
+            if(c.area?.length){
+              const tags=document.createElement('div');
+              tags.className='course-tags';
+              c.area.forEach(tag=>{
+                const span=document.createElement('span');
+                span.className='course-tag';
+                span.textContent=tag;
+                tags.appendChild(span);
+              });
+              li.appendChild(tags);
+            }
+            timelineEl.appendChild(li);
+          });
+        });
+      }
     })();
   </script>
 </body>
