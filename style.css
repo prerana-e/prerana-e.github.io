@@ -242,9 +242,8 @@ body.projects-loaded .projects-hero .minimal-badges{opacity:1;transform:none;poi
 #contact.highlight-pulse,#about.highlight-pulse,#skills.highlight-pulse{animation:sectionPulse 1.4s ease-out forwards}
 @keyframes sectionPulse{0%{box-shadow:0 0 0 0 rgba(42,125,225,.55)}70%{box-shadow:0 0 0 18px rgba(42,125,225,0)}100%{box-shadow:0 0 0 0 rgba(42,125,225,0)}}
 
-/* Anchor offset: provide breathing room above About when navigated via hash */
-#about{scroll-margin-top:90px}
-#contact{scroll-margin-top:90px}
+/* Anchor offset: provide breathing room above anchored sections when navigated via hash */
+#about,#contact,#skills{scroll-margin-top:90px}
 
 .container{max-width:1100px;margin:auto;padding:28px 18px}
 .hero{position:relative;min-height:62vh;display:grid;place-items:center;text-align:center}
