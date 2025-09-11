@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="alternate" type="application/rss+xml" title="Prerana Gowda Blog RSS" href="rss.xml" />
+  <script type="application/ld+json">{
+    "@context":"https://schema.org","@type":"Blog","name":"Prerana Gowda Blog","url":"https://prerana-e.github.io/blog.html","description":"Engineering notes on AI tooling, networking, developer experience, and focused workflows."}</script>
 </head>
 <body class="sky blog-page">
   <header class="site-header">
@@ -62,137 +64,62 @@
         <section class="posts-wrap">
   <div class="posts-grid news-grid" id="posts" data-page-size="5">
         <!-- Sample Post 1 -->
-        <article id="mcp-nso" class="post tile feature" data-tags="ai,networking" data-date="2025-08-12">
+  <article id="mcp-nso" class="post tile feature" data-tags="ai,networking" data-date="2025-08-12" onclick="location.href='posts/mcp-nso.html'" role="link" tabindex="0">
           <header class="post-head">
             <h3>Bridging Model Context Protocol with Network Orchestration</h3>
             <div class="post-meta"><time datetime="2025-08-12">Aug 12, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">AI · Networking</span></div>
           </header>
-          <p class="excerpt">How I wired an AI assistant through a custom MCP server to speak RESTCONF with Cisco NSO & keep hallucinations out of the control plane.</p>
-          <details class="post-body-wrap" open>
-            <summary>Collapse</summary>
-            <div class="post-body prose">
-              <p><strong>Why:</strong> LLMs are great at reasoning around desired state but untrusted at executing imperative network changes. The <em>Model Context Protocol</em> (MCP) lets you expose only safe, well-typed actions.</p>
-              <p>I built an adapter that reflects NSO RESTCONF endpoints into MCP tools. Each tool declares input schema & pre-flight validation. Returned output is normalized JSON—not raw CLI text.</p>
-              <pre><code>// Simplified tool descriptor
-interface Tool {
-  name: string;
-  input: Schema;
-  run(args): Promise<Result>;
-}
-// Example: fetch service instance
-tool("get_service", { service: string }, async ({service}) => nsoreq(`/restconf/data/svc:${'{'}service{'}'}`));</code></pre>
-              <blockquote>
-                <p>Deterministic envelopes + constrained side-effects give the model guardrails while preserving flexible goal reasoning.</p>
-              </blockquote>
-              <ul>
-                <li>Map: RESTCONF -> canonical tool set</li>
-                <li>Add auth + rate limits</li>
-                <li>Cache read-only queries</li>
-                <li>Require idempotency proof for mutating ops</li>
-              </ul>
-              <p>Result: zero unaudited config diffs; faster intent translation; human trust improved because every action is logged with structured parameters.</p>
-              <hr>
-              <p><em>Next:</em> introduce a diff simulation tool & integrate policy checks before write operations.</p>
-            </div>
-          </details>
+          <p class="excerpt">How I exposed a constrained, typed tool surface over Cisco NSO (RESTCONF) via MCP so an AI assistant could reason safely without free‑form device access.</p>
           <div class="chip-line"><span class="chip">MCP</span><span class="chip">NSO</span><span class="chip">RESTCONF</span></div>
         </article>
 
         <!-- Sample Post 2 -->
-        <article id="rl-lessons" class="post tile" data-tags="ai" data-date="2025-07-02">
+  <article id="rl-lessons" class="post tile" data-tags="ai" data-date="2025-07-02" onclick="location.href='posts/rl-lessons.html'" role="link" tabindex="0">
           <header class="post-head">
             <h3>Hard Lessons from Small Reinforcement Learning Runs</h3>
             <div class="post-meta"><time datetime="2025-07-02">Jul 2, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">AI</span></div>
           </header>
-          <p class="excerpt">Micro-budgets force discipline: reward shaping sanity checks, variance tracking & deliberately tiny experiments.</p>
-          <details class="post-body-wrap">
-            <summary>Read more</summary>
-            <div class="post-body prose">
-              <p>Instead of scaling prematurely, I treated every run as a falsifiable hypothesis. If a change didn’t tighten variance bands in 3 trials, it was discarded.</p>
-              <p><strong>Signal quality beats parameter count.</strong> I added a <code>console.table()</code>-driven dashboard during training printing rolling KL, entropy & episodic return deltas.</p>
-              <pre><code>// Pseudo logging snippet
-logStep({
-  step,
-  return: epReturn,
-  entropy: policy.entropy(),
-  kl: klDiv,
-  lr: optimizer.lr
-});</code></pre>
-              <p>That surfaced early collapse in one variant long before aggregate plots would have. Most “improvements” were noise.</p>
-              <p><em>Rule of thumb:</em> if a tweak needs >5 seeds to look positive, it's probably placebo.</p>
-            </div>
-          </details>
+      <p class="excerpt">Tiny RL budgets forced strict experiment hygiene: variance tracking, ruthless pruning, and reward sanity snapshots.</p>
           <div class="chip-line"><span class="chip">RL</span><span class="chip">PyTorch</span></div>
         </article>
 
         <!-- Sample Post 3 -->
-        <article id="infra-fast" class="post tile" data-tags="devops,productivity" data-date="2025-06-18">
+  <article id="infra-fast" class="post tile" data-tags="devops,productivity" data-date="2025-06-18" onclick="location.href='posts/infra-fast.html'" role="link" tabindex="0">
           <header class="post-head">
             <h3>Shaving 40% Off Ephemeral Environment Spin-up</h3>
             <div class="post-meta"><time datetime="2025-06-18">Jun 18, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">DevOps · Productivity</span></div>
           </header>
-          <p class="excerpt">Layered caching, image diet, parallel provisioners & a ruthless look at “default” waits.</p>
-          <details class="post-body-wrap">
-            <summary>Read more</summary>
-            <div class="post-body prose">
-              <ol>
-                <li>Base image trimmed from 1.9GB → 640MB</li>
-                <li>Terraform module decomposition enabling parallel apply</li>
-                <li>Feature flags gating expensive integrations during preview</li>
-              </ol>
-              <p>We instrumented each stage; a flame graph for infra is just a waterfall with ego removed.</p>
-            </div>
-          </details>
+          <p class="excerpt">Cut preview env spin‑up 40% by slimming images, parallelizing Terraform roots, and deleting invisible waits.</p>
           <div class="chip-line"><span class="chip">Terraform</span><span class="chip">Docker</span></div>
         </article>
 
         <!-- Sample Post 4 -->
-        <article id="design-tokens" class="post tile" data-tags="design,productivity" data-date="2025-05-04">
+  <article id="design-tokens" class="post tile" data-tags="design,productivity" data-date="2025-05-04" onclick="location.href='posts/design-tokens.html'" role="link" tabindex="0">
           <header class="post-head">
             <h3>Design Tokens That Engineers Don’t Ignore</h3>
             <div class="post-meta"><time datetime="2025-05-04">May 4, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">Design · Productivity</span></div>
           </header>
-            <p class="excerpt">Actionable docs + lint rules > pretty Figma handoffs. Make the right thing the easy thing.</p>
-            <details class="post-body-wrap">
-              <summary>Read more</summary>
-              <div class="post-body prose">
-                <p>The token JSON lived next to the components consuming it; PR diffs showed semantic deltas. A failing CI check caught any hard-coded color before review.</p>
-                <blockquote><p>Adoption isn't an education problem, it's an incentives + friction problem.</p></blockquote>
-              </div>
-            </details>
+            <p class="excerpt">Adoption came from friction reduction: co‑located tokens, automated diffs, and lint blocks for hard‑coded style.</p>
             <div class="chip-line"><span class="chip">Tokens</span><span class="chip">DX</span></div>
         </article>
 
         <!-- Sample Post 5 -->
-        <article id="focus-systems" class="post tile" data-tags="productivity,career" data-date="2025-04-11">
+  <article id="focus-systems" class="post tile" data-tags="productivity,career" data-date="2025-04-11" onclick="location.href='posts/focus-systems.html'" role="link" tabindex="0">
           <header class="post-head">
             <h3>Focus Systems for Context-Switch Heavy Weeks</h3>
             <div class="post-meta"><time datetime="2025-04-11">Apr 11, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">Productivity · Career</span></div>
           </header>
-          <p class="excerpt">Energy budgeting > time boxing. I cluster tasks by cognitive mode & protect recovery slots.</p>
-          <details class="post-body-wrap">
-            <summary>Read more</summary>
-            <div class="post-body prose">
-              <p>A 3-tier backlog: <code>deep</code>, <code>shallow</code>, <code>maintenance</code>. Every morning I slot just 1 deep item; any extra is a bonus, not a promise.</p>
-              <p>Slack windows collapsed to 10m top-of-hour sweeps. Calendar holds for decompression prevented accidental entropy.</p>
-            </div>
-          </details>
+      <p class="excerpt">Energy > time. I cluster by cognitive mode (deep / shallow / maintenance) and budget recovery first.</p>
           <div class="chip-line"><span class="chip">Habits</span><span class="chip">Focus</span></div>
         </article>
 
         <!-- Sample Post 6 -->
-        <article id="early-career" class="post tile" data-tags="career" data-date="2025-03-02">
+  <article id="early-career" class="post tile" data-tags="career" data-date="2025-03-02" onclick="location.href='posts/early-career.html'" role="link" tabindex="0">
           <header class="post-head">
             <h3>What Actually Compounds in an Early Engineering Career</h3>
             <div class="post-meta"><time datetime="2025-03-02">Mar 2, 2025</time> • <span class="reading-time">—</span> • <span class="tags-line">Career</span></div>
           </header>
-          <p class="excerpt">Pattern literacy, feedback loops, and naming trade-offs explicitly.</p>
-          <details class="post-body-wrap">
-            <summary>Read more</summary>
-            <div class="post-body prose">
-              <p>I tracked a personal <em>decision changelog</em>: major calls, rationale, outcome 30 days later. It accelerated judgment calibration.</p>
-            </div>
-          </details>
+      <p class="excerpt">What compounds early: pattern literacy, explicit trade‑off logs, and feedback loop density.</p>
           <div class="chip-line"><span class="chip">Growth</span><span class="chip">Meta</span></div>
         </article>
   </div>

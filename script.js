@@ -99,10 +99,11 @@ document.querySelectorAll('a[data-scroll][href^="#"]').forEach(a=>{
     // Contact form validation + fake submit (static site)
     const form=document.getElementById('contactForm');
     if(form){
-      form.addEventListener('submit',e=>{
+      form.addEventListener('submit',async e=>{
         e.preventDefault();
         const status=document.getElementById('formStatus');
         status.textContent='';
+        status.className='form-status';
         const fields=['name','email','message'];
         let ok=true;
         fields.forEach(id=>{
@@ -110,20 +111,34 @@ document.querySelectorAll('a[data-scroll][href^="#"]').forEach(a=>{
           const group=input.closest('.field-group');
           group.classList.remove('invalid');
           const err=group.querySelector('.field-error');
-          err.textContent='';
+            err.textContent='';
           if(!input.value.trim()){
             ok=false; group.classList.add('invalid'); err.textContent='Required'; return; }
           if(id==='email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.value.trim())){ ok=false; group.classList.add('invalid'); err.textContent='Invalid'; }
         });
         if(!ok){ status.textContent='Please fix the highlighted fields.'; status.className='form-status error'; return; }
         const btn=form.querySelector('.submit-btn'); btn.classList.add('sending'); btn.textContent='Sending…';
-        // Simulate async send
-        setTimeout(()=>{
+        const formData=new FormData(form);
+        try{
+          const resp=await fetch(form.action,{
+            method:'POST',
+            headers:{'Accept':'application/json'},
+            body:formData
+          });
           btn.classList.remove('sending'); btn.textContent='Send';
-          form.reset();
-          status.textContent='Message ready in your email client (or simulated send).';
-          status.className='form-status success';
-        },900);
+          if(resp.ok){
+            form.reset();
+            status.textContent='Email sent.';
+            status.className='form-status success';
+          } else {
+            status.textContent='Error sending. Please try again later.';
+            status.className='form-status error';
+          }
+        }catch(err){
+          btn.classList.remove('sending'); btn.textContent='Send';
+          status.textContent='Network error. Please retry.';
+          status.className='form-status error';
+        }
       });
     }
 

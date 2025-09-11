@@ -18,12 +18,27 @@
   <ul class="nav-links">
   <li><a href="#about" data-scroll>About</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="404.html">Blog</a></li>
+  <li><a href="blog.html">Blog</a></li>
 
   <li><a href="#skills" data-scroll>Skills</a></li>
   <li><a href="assets/resume/prerana-gowda-resume.pdf" download>Resume</a></li>
       </ul>
-  <div class="nav-extra" aria-hidden="false"><a href="#contact" data-scroll class="btn btn-contact" aria-label="Contact"><span class="icon-mail" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" ry="2"/><polyline points="3,7 12,13 21,7"/></svg></span><span class="label">Contact</span></a></div>
+  <div class="nav-extra" aria-hidden="false">
+    <!-- Social / contact icon buttons -->
+    <a class="icon-circle" href="https://github.com/prerana-e" target="_blank" rel="noopener" aria-label="GitHub Profile">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor">
+        <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.42 7.9 10.95.58.1.8-.25.8-.56 0-.28-.01-1.02-.02-2-3.22.7-3.9-1.55-3.9-1.55-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.74 1.27 3.4.97.1-.76.41-1.27.75-1.56-2.57-.29-5.27-1.29-5.27-5.73 0-1.27.46-2.3 1.2-3.11-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.19a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.5 3.17-1.19 3.17-1.19.63 1.59.24 2.76.12 3.05.75.81 1.2 1.84 1.2 3.11 0 4.45-2.7 5.44-5.28 5.72.42.36.8 1.06.8 2.14 0 1.55-.01 2.79-.01 3.17 0 .31.21.67.81.56A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+      </svg>
+    </a>
+    <a class="icon-circle" href="https://www.linkedin.com/in/prerana-gowda" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor">
+        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7.5 0h3.83v1.71h.05c.53-.95 1.82-1.95 3.75-1.95 4.01 0 4.77 2.64 4.77 6.07V21h-4v-5.22c0-1.24-.02-2.83-1.73-2.83-1.73 0-1.99 1.36-1.99 2.73V21h-3.98V9Z"/>
+      </svg>
+    </a>
+    <a class="icon-circle" href="#contact" data-scroll aria-label="Jump to Contact Section">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" ry="2"/><polyline points="3,7 12,13 21,7"/></svg>
+    </a>
+  </div>
     </nav>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
   </header>
@@ -49,7 +64,7 @@
         <p class="tagline">Full‑stack engineer crafting AI‑assisted developer & network automation experiences with a bias toward shipping polished, reliable tools.</p>
         <div class="hero-actions">
           <a href="projects.html" class="btn">View Projects</a>
-          <a href="404.html" class="btn ghost">Read Blog</a>
+          <a href="assets/resume/prerana-gowda-resume.pdf" class="btn ghost" download aria-label="Download Resume PDF">Resume</a>
           <!-- <a href="#contact" class="btn ghost btn-contact" data-scroll>Contact</a> -->
         </div>
         <ul class="metrics compact" aria-label="Quick stats">
@@ -85,6 +100,7 @@
     <section id="journey" class="card journey" aria-label="Career Timeline" data-reveal>
       <h2>Journey</h2>
       <ol class="timeline" aria-label="Timeline of roles" role="list">
+        
         <li class="timeline-item" role="listitem" data-reveal data-delay="0.05">
           <details class="timeline-card ti-collapsible" open>
             <summary class="ti-summary">
@@ -98,10 +114,10 @@
               <span class="ti-caret" aria-hidden="true"></span>
             </summary>
             <div class="ti-content">
-              <p>Prototyping MCP-driven AI assistant tooling layered over network orchestration APIs; adding guardrails & action logging.</p>
+              <p>AI-assisted network operations tooling layered over NSO (RESTCONF) with safety guardrails and observability.</p>
               <ul class="ti-points" role="list">
-                <li>Typed tool interface for NSO RESTCONF exposure</li>
-                <li>Diff simulation pre-apply checks (in progress)</li>
+                <li>Built an MCP server exposing typed NSO RESTCONF tools with Slack UI (AOS Support Bot).</li>
+                <li>Implemented dry-run diff checks, action logging, and typed schemas to reduce change risk.</li>
               </ul>
             </div>
           </details>
@@ -114,15 +130,15 @@
               </span>
               <span class="ti-text-group">
                 <h3>Gen AI Technical Advisor Intern <span class="at">@ Scale AI</span></h3>
-                <time class="ti-time" datetime="2024-09">May 2025 – Present</time>
+                <time class="ti-time" datetime="2025-05">May 2025 – Present</time>
               </span>
               <span class="ti-caret" aria-hidden="true"></span>
             </summary>
             <div class="ti-content">
-              <p>Reinforcement learning experiments across multi-scenario traffic environments; reward shaping & stability focus.</p>
+              <p>Advising on GenAI workflows and building small reference tools to improve evaluation and reliability.</p>
               <ul class="ti-points" role="list">
-                <li>Variance tracking dashboards & harness</li>
-                <li>Curriculum scheduling reduced instability</li>
+                <li>Set up prompt/eval harnesses and diagnostics to triage model behavior.</li>
+                <li>Created example apps and scripts to accelerate customer experimentation.</li>
               </ul>
             </div>
           </details>
@@ -140,16 +156,15 @@
               <span class="ti-caret" aria-hidden="true"></span>
             </summary>
             <div class="ti-content">
-              <p>Orchestration dashboards, RL tooling, UI component systems, and asset optimization pipelines across personal & academic projects.</p>
+              <p>Co-led a summer program; delivered lectures, designed hands‑on labs, and mentored student project teams.</p>
               <ul class="ti-points" role="list">
-                <li>Dark / light adaptive design tokens</li>
-                <li>Automated thumbnail performance pipeline</li>
+                <li>Developed materials on applied Python and introductory ML concepts.</li>
+                <li>Guided teams on project planning, iteration, and demos.</li>
               </ul>
             </div>
           </details>
         </li>
       </ol>
-      <div class="center mt journey-actions"><a href="assets/resume/prerana-gowda-resume.pdf" class="btn ghost" download>Download Resume</a></div>
     </section>
 
   <section id="projects" class="card" data-reveal>
@@ -207,7 +222,7 @@
     <section id="contact" class="card contact-section" data-reveal>
       <h2>Contact</h2>
       <p class="contact-intro">Have a question, idea, or opportunity? Drop a note and I’ll get back soon.</p>
-      <form id="contactForm" action="mailto:your.email@example.com" method="post" enctype="text/plain" novalidate>
+        <form id="contactForm" action="https://formspree.io/f/xnnbwvvk" method="POST" novalidate>
         <div class="contact-grid">
           <div class="field-group">
             <label class="sr-only" for="name">Name</label>
@@ -225,6 +240,9 @@
             <span class="field-error" data-for="message"></span>
           </div>
         </div>
+          <!-- Honeypot field to reduce spam (keep hidden) -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
+          <input type="hidden" name="_subject" value="Portfolio Contact" />
         <div class="contact-actions">
           <button type="submit" class="btn submit-btn" aria-live="polite">Send</button>
           <span class="form-status" id="formStatus" role="status" aria-live="polite"></span>
