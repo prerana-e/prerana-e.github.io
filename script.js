@@ -76,7 +76,7 @@ document.querySelectorAll('a[data-scroll][href^="#"]').forEach(a=>{
       hint=document.createElement('button');
       hint.type='button';
       hint.className='explore-hint';
-      hint.innerHTML='<span>Move mouse or scroll ↓</span>';
+      hint.innerHTML='<span>Scroll to see more ↓</span>';
       document.body.appendChild(hint);
       requestAnimationFrame(()=>hint.classList.add('show'));
       hint.addEventListener('click',exitHeroOnly);
